@@ -16,12 +16,13 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: all 0.3s; }
+  transition: all 0.3s cubic-bezier(1, 0, 0, 1); }
 
 * {
   box-sizing: border-box;
   max-width: 100%;
-  outline: none; }
+  outline: none;
+  backface-visibility: hidden; }
 
 body {
   margin: 0;
@@ -63,6 +64,9 @@ a {
     margin: 0 auto;
     transition: all 0.5s;
     z-index: -1; }
+
+.opacity-0 {
+  opacity: 0; }
 
 .loader {
   position: fixed;
@@ -274,7 +278,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 60px 55% 20px 40px;
-  transition: all 1s; }
+  transition: all 1s cubic-bezier(1, 0, 0, 1); }
   .about.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
@@ -285,7 +289,7 @@ a {
     font-weight: bold; }
   .about h1, .about div {
     line-height: 20;
-    transition: all 1s; }
+    transition: all 1s cubic-bezier(1, 0, 0, 1); }
     .about h1.animation, .about div.animation {
       line-height: 1.4; }
   .about img {
@@ -294,7 +298,7 @@ a {
     right: 40px;
     max-height: calc(100vh - 120px);
     max-width: 50vw;
-    transition: all 0.6s; }
+    transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
     .about img.animation {
       top: 0; }
 
@@ -307,7 +311,7 @@ a {
   display: flex;
   flex-direction: column;
   padding: 60px 40px 20px 53%;
-  transition: all 1s; }
+  transition: all 1s cubic-bezier(1, 0, 0, 1); }
   .contact.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
@@ -315,7 +319,7 @@ a {
     margin-top: 0; }
   .contact h1, .contact div {
     line-height: 20;
-    transition: all 1s; }
+    transition: all 1s cubic-bezier(1, 0, 0, 1); }
     .contact h1.animation, .contact div.animation {
       line-height: 1.4; }
   .contact img {
@@ -324,14 +328,16 @@ a {
     left: 40px;
     max-height: calc(100vh - 120px);
     max-width: 50vw;
-    transition: all 0.6s; }
+    transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
     .contact img.animation {
       top: 0; }
 
 .menu {
   position: fixed;
   width: calc(100vw - 120px);
-  height: 0;
+  height: calc(100vh - 120px);
+  transform: scaleY(0);
+  transform-origin: top;
   top: 60px;
   z-index: 5;
   background: #f7f7f7;
@@ -339,9 +345,9 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.6s; }
+  transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
   .menu.animation {
-    height: calc(100vh - 120px); }
+    transform: scaleY(1); }
   .menu .menu-link {
     color: #000000;
     margin: 40px 10px;
@@ -380,7 +386,7 @@ a {
     position: absolute;
     top: 0;
     padding: 60px;
-    transition: 0.4s;
+    transition: 0.4s cubic-bezier(1, 0, 0, 1);
     opacity: 0;
     color: #FFFFFF; }
     .home .hover h1 {
@@ -427,22 +433,28 @@ a {
   z-index: 2;
   background: #FFFFFF;
   line-height: 30;
-  transition: line-height 1s, background 1s, opacity 0.5s, padding 0.5s; }
+  transition: line-height 1s, background 1s, opacity 0.5s, padding 0.5s cubic-bezier(1, 0, 0, 1); }
   .project h1 {
     margin: 60px;
     font-size: 50px;
-    font-weight: bold; }
+    font-weight: bold;
+    transition: all 1s cubic-bezier(1, 0, 0, 1); }
+  .project > div * {
+    transition: all 1s cubic-bezier(1, 0, 0, 1); }
   .project.animation {
     background: #f7f7f7;
     line-height: 1.3; }
   .project.animated {
     opacity: 0;
     padding-top: 50vh; }
+  .project.line-height {
+    line-height: 30; }
   .project .description {
     display: flex;
     width: 100%;
     padding: 0 60px;
-    justify-content: space-between; }
+    justify-content: space-between;
+    background: #f7f7f7; }
     .project .description .label {
       font-size: 16px;
       display: block;

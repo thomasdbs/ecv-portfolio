@@ -1,7 +1,9 @@
 .menu {
   position: fixed;
   width: calc(100vw - 120px);
-  height:0;
+  height: calc(100vh - 120px);
+  transform: scaleY(0);
+  transform-origin: top;
   top: 60px;
   z-index: 5;
   background: $grey;
@@ -9,10 +11,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 0.6s;
+  transition: all 0.6s $easeInOutExpo;
 
   &.animation {
-    height: calc(100vh - 120px);
+    transform: scaleY(1);
   }
 
   .menu-link {

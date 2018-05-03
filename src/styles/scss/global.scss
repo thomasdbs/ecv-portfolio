@@ -2,6 +2,7 @@
   box-sizing: border-box;
   max-width: 100%;
   outline: none;
+  backface-visibility: hidden;
 }
 
 body {
@@ -65,4 +66,9 @@ a {
     z-index:-1;
   }
 
+}
+
+
+.opacity-0 {
+  opacity: 0;
 }

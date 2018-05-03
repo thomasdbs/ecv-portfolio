@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$grey".
-        on line 7 of src/styles/scss/menu.scss
+        on line 9 of src/styles/scss/menu.scss
 
-2:   position: fixed;
-3:   width: calc(100vw - 120px);
-4:   height:0;
-5:   top: 60px;
-6:   z-index: 5;
-7:   background: $grey;
-8:   display: flex;
-9:   flex-direction: column;
-10:   justify-content: center;
-11:   align-items: center;
-12:   transition: all 0.6s;
+4:   height: calc(100vh - 120px);
+5:   transform: scaleY(0);
+6:   transform-origin: top;
+7:   top: 60px;
+8:   z-index: 5;
+9:   background: $grey;
+10:   display: flex;
+11:   flex-direction: column;
+12:   justify-content: center;
+13:   align-items: center;
+14:   transition: all 0.6s $easeInOutExpo;
 
 Backtrace:
-src/styles/scss/menu.scss:7
+src/styles/scss/menu.scss:9
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -69,4 +69,4 @@ src/styles/scss/menu.scss:7
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$grey\".\A         on line 7 of src/styles/scss/menu.scss\A \A 2:   position: fixed;\A 3:   width: calc(100vw - 120px);\A 4:   height:0;\A 5:   top: 60px;\A 6:   z-index: 5;\A 7:   background: $grey;\A 8:   display: flex;\A 9:   flex-direction: column;\A 10:   justify-content: center;\A 11:   align-items: center;\A 12:   transition: all 0.6s;"; }
+  content: "Error: Undefined variable: \"$grey\".\A         on line 9 of src/styles/scss/menu.scss\A \A 4:   height: calc(100vh - 120px);\A 5:   transform: scaleY(0);\A 6:   transform-origin: top;\A 7:   top: 60px;\A 8:   z-index: 5;\A 9:   background: $grey;\A 10:   display: flex;\A 11:   flex-direction: column;\A 12:   justify-content: center;\A 13:   align-items: center;\A 14:   transition: all 0.6s $easeInOutExpo;"; }

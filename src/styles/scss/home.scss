@@ -29,7 +29,7 @@
     position: absolute;
     top: 0;
     padding: 60px;
-    transition: 0.4s;
+    transition: 0.4s $easeInOutExpo;
     opacity: 0;
     color: $white;
 
@@ -114,12 +114,17 @@
   z-index: 2;
   background: $white;
   line-height: 30;
-  transition: line-height 1s, background 1s, opacity 0.5s, padding 0.5s;
+  transition: line-height 1s, background 1s, opacity 0.5s, padding 0.5s $easeInOutExpo;
 
   h1 {
     margin: 60px;
     font-size: 50px;
     font-weight: bold;
+    transition: all 1s $easeInOutExpo;
+  }
+
+  > div * {
+    transition: all 1s $easeInOutExpo;
   }
 
   &.animation {
@@ -132,12 +137,17 @@
     padding-top: 50vh;
   }
 
+  &.line-height{
+    line-height: 30;
+  }
+
   .description {
 
     display: flex;
     width: 100%;
     padding: 0 60px;
     justify-content: space-between;
+    background: $grey;
 
     .label {
       font-size: 16px;

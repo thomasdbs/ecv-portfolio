@@ -28,7 +28,6 @@ class HOME extends Component {
 
   componentDidMount() {
 
-
     if (sessionStorage.getItem("projects") !== null && sessionStorage.getItem("projectsCount") !== null) {
 
       this.setState({
@@ -164,11 +163,96 @@ class HOME extends Component {
 
   }
 
+  changeSingleProject = (direction) => {
+
+    const { currentProject, projectsCount } = this.state
+    let newProject = null
+
+    if (direction === 'next') {
+      if (currentProject < projectsCount-1) {
+        newProject = currentProject+1
+      }else {
+        newProject = 0
+      }
+    }else if (direction === 'prev') {
+      if (currentProject>0) {
+        newProject = currentProject-1
+      }else {
+        newProject = projectsCount-1
+      }
+    }
+
+    document.querySelector('.project h1').classList.add('opacity-0')
+    document.querySelectorAll('.project > div *').forEach((element) => {
+      element.classList.add('opacity-0')
+    })
+
+    this.smoothScroll(document.documentElement.scrollTop, document.documentElement.scrollTop, newProject)
+
+    // console.log(document.documentElement.scrollTop/(document.documentElement.scrollTop/500));
+    // console.log(document.documentElement.scrollTop/500);
+
+  }
+
+  smoothScroll = (h, originTop, projectID) => {
+    let i = h || 0
+    if (i > 0) {
+      setTimeout(() => {
+        window.scrollTo(0, i)
+        this.smoothScroll(i - 50, originTop, projectID)
+      }, originTop/500)
+    }else{
+
+      this.setState({ currentProject:projectID })
+      document.querySelector('.container-out').style.overflow='hidden'
+      this.setState({ projectLoading:true })
+      document.querySelector('.project').classList.add('line-height')
+
+      setTimeout( () => {
+        axios.get(`${config.mainRoute}posts/${this.state.projects[Object.keys(this.state.projects)[projectID]].id}?_embed`)
+        .then((response) => {
+
+          this.setState({ singleProject:
+            {
+              projectLoading:false,
+              title:response.data.title.rendered,
+              subtitle:response.data.acf.subtitle,
+              content:response.data.acf.content,
+              context:response.data.acf.context,
+              picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
+              year:response.data.acf.year,
+              picture:response.data._embedded['wp:featuredmedia'][0].source_url
+            }
+          })
+
+          setTimeout( () => {
+            document.querySelector('.project h1').classList.remove('opacity-0')
+            document.querySelectorAll('.project > div *').forEach((element) => {
+              element.classList.remove('opacity-0')
+            })
+            document.querySelector('.project').classList.remove('line-height')
+            const video = document.querySelector('video')
+            if (video) {
+              video.pause()
+            }
+            document.querySelector('.container-out').style.overflow='inherit'
+          }, 100)
+
+        })
+
+      }, 2000)
+
+    }
+
+  }
+
   showProject = (id) => {
 
     const hover = document.querySelector('.hover')
-    hover.removeEventListener('mouseover', this.pauseVideo)
-    hover.removeEventListener('mouseout', this.playVideo)
+    if (hover) {
+      hover.removeEventListener('mouseover', this.pauseVideo)
+      hover.removeEventListener('mouseout', this.playVideo)
+    }
 
     const video = document.querySelector('video')
     if (video) {
@@ -302,7 +386,7 @@ class HOME extends Component {
         if (singleProject.picturesGallery) {
           const picturesGallery = JSON.parse(singleProject.picturesGallery)
           picturesGallery.forEach((picture) => {
-              picturesDOM += `<img src="${picture.picture}" alt="" />`
+            picturesDOM += `<img src="${picture.picture}" alt="" />`
           })
         }
       }
@@ -372,7 +456,6 @@ class HOME extends Component {
 
             {(singleProject.picturesGallery) && (
               <div className="pictures">
-                {/* <h2>{JSON.parse(singleProject.picturesGallery)}</h2> */}
                 {renderHTML(picturesDOM)}
               </div>
             )}
@@ -380,13 +463,13 @@ class HOME extends Component {
             <div className="navigation">
               <div className="previous">
                 <img src={require('../../img/arrow-left.png')} alt="" />
-                <button className="btn-anim">Projet précédent</button>
+                <button className="btn-anim" onMouseDown={() => this.changeSingleProject('prev')}>Projet précédent</button>
               </div>
               <div className="author">
                 © {(new Date()).getFullYear()} Aurélie Marcuard
               </div>
               <div className="next">
-                <button className="btn-anim">Projet suivant</button>
+                <button className="btn-anim" onMouseDown={() => this.changeSingleProject('next')}>Projet suivant</button>
                 <img src={require('../../img/arrow-right.png')} alt="" />
               </div>
             </div>

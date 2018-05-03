@@ -1,7 +1,8 @@
 * {
   box-sizing: border-box;
   max-width: 100%;
-  outline: none; }
+  outline: none;
+  backface-visibility: hidden; }
 
 body {
   margin: 0;
@@ -43,5 +44,8 @@ a {
     margin: 0 auto;
     transition: all 0.5s;
     z-index: -1; }
+
+.opacity-0 {
+  opacity: 0; }
 
 /*# sourceMappingURL=global.css.map */
