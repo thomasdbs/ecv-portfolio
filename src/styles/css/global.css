@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  outline: none; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif; }
+
+a {
+  text-decoration: none; }
+
+.none {
+  display: none !important; }
+
+@font-face {
+  font-family: GTWalsheimPro;
+  src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Light.ttf"); }
+@font-face {
+  font-family: GTWalsheimProBold;
+  src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf"); }
+.btn-anim {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.5s;
+  background: none;
+  border: none;
+  padding: 0;
+  padding-bottom: 5px; }
+  .btn-anim:hover::before {
+    width: 100%;
+    left: 0%; }
+  .btn-anim::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    width: 0%;
+    left: 0%;
+    margin: 0 auto;
+    transition: all 0.5s;
+    z-index: -1; }
+
+/*# sourceMappingURL=global.css.map */
