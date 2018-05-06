@@ -187,6 +187,7 @@ class HOME extends Component {
       element.classList.add('opacity-0')
     })
 
+    this.setState({ currentProject:newProject })
     this.smoothScroll(document.documentElement.scrollTop, document.documentElement.scrollTop, newProject)
 
     // console.log(document.documentElement.scrollTop/(document.documentElement.scrollTop/500));
@@ -203,7 +204,6 @@ class HOME extends Component {
       }, originTop/500)
     }else{
 
-      this.setState({ currentProject:projectID })
       document.querySelector('.container-out').style.overflow='hidden'
       this.setState({ projectLoading:true })
       document.querySelector('.project').classList.add('line-height')
@@ -308,6 +308,8 @@ class HOME extends Component {
 
   hideProject = () => {
     document.querySelector('.project').classList.remove('animation')
+    document.querySelector('.project .description').classList.add('bg-white')
+
     setTimeout( () => {
       document.querySelector('.project').classList.add('none')
       document.querySelector('#start').setAttribute('d', svg_path_start)
@@ -317,7 +319,7 @@ class HOME extends Component {
       document.querySelector('#end').style.display='inline'
       TweenLite.to("#end", 1, {morphSVG:"#wave"})
       TweenLite.to("#end", 1, {morphSVG:"#start"}).delay(0.4)
-    }, 1000)
+    }, 1700)
 
     setTimeout( () => {
       document.querySelector('.hover').classList.remove('none')
@@ -336,7 +338,7 @@ class HOME extends Component {
         video.addEventListener('ended', this.goToNext)
       }
 
-    }, 2400)
+    }, 3100)
 
     setTimeout( () => {
       document.querySelector('.slider-infos').classList.remove('none')
@@ -344,7 +346,7 @@ class HOME extends Component {
       document.querySelector('#wave').setAttribute('d', svg_path_wave)
       document.querySelector('#end').setAttribute('d', svg_path_end)
       document.querySelector('#end').style.display='none'
-    }, 2500)
+    }, 3200)
 
   }
 
