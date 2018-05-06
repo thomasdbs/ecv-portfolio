@@ -141,6 +141,42 @@
     line-height: 30;
   }
 
+  .links {
+
+    div {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+
+      a {
+        font-size: 16px;
+        color: $black;
+        font-family: GTWalsheimProBold;
+
+        &:hover {
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
+        }
+
+        &::before {
+          border-bottom:solid 2px $black;
+        }
+
+      }
+
+      img {
+        width: 13px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+      }
+
+    }
+
+  }
+
   .description {
 
     display: flex;

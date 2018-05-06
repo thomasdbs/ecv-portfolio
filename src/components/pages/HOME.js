@@ -218,6 +218,7 @@ class HOME extends Component {
               content:response.data.acf.content_fr,
               context:response.data.acf.context_fr,
               picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
+              links: JSON.stringify(response.data.acf.links),
               year:response.data.acf.year,
               picture:response.data.acf.picture
             }
@@ -284,6 +285,7 @@ class HOME extends Component {
             content:response.data.acf.content_fr,
             context:response.data.acf.context_fr,
             picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
+            links: JSON.stringify(response.data.acf.links),
             year:response.data.acf.year,
             picture:response.data.acf.picture
           }
@@ -357,6 +359,7 @@ class HOME extends Component {
     let home_picture = null
     let onProject = false
     let picturesDOM = ""
+    let linksDOM = ""
 
     if (loading) {
 
@@ -386,6 +389,12 @@ class HOME extends Component {
           const picturesGallery = JSON.parse(singleProject.picturesGallery)
           picturesGallery.forEach((picture) => {
             picturesDOM += `<img src="${picture.picture}" alt="" />`
+          })
+        }
+        if (singleProject.links) {
+          const links = JSON.parse(singleProject.links)
+          links.forEach((l) => {
+            linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
           })
         }
       }
@@ -447,6 +456,13 @@ class HOME extends Component {
               <div className="text-container">
                 <span className="label">Le projet : </span>
                 <p className="text">{singleProject.content}</p>
+
+                {(singleProject.links) && (
+                  <div className="links">
+                    {renderHTML(linksDOM)}
+                  </div>
+                )}
+
               </div>
               <div className="categories">
                 <span className="label">Le projet : </span>

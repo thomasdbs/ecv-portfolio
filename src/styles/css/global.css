@@ -1,17 +1,17 @@
 /*
 Error: Undefined variable: "$white".
-        on line 77 of src/styles/scss/global.scss
+        on line 76 of src/styles/scss/global.scss
 
-72: .opacity-0 {
-73:   opacity: 0;
-74: }
-75: 
-76: .bg-white {
-77:   background: $white !important;
-78: }
+71: .opacity-0 {
+72:   opacity: 0;
+73: }
+74: 
+75: .bg-white {
+76:   background: $white !important;
+77: }
 
 Backtrace:
-src/styles/scss/global.scss:77
+src/styles/scss/global.scss:76
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/list_literal.rb:75:in `block in _perform'
@@ -69,4 +69,4 @@ src/styles/scss/global.scss:77
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$white\".\A         on line 77 of src/styles/scss/global.scss\A \A 72: .opacity-0 {\A 73:   opacity: 0;\A 74: }\A 75: \A 76: .bg-white {\A 77:   background: $white !important;\A 78: }"; }
+  content: "Error: Undefined variable: \"$white\".\A         on line 76 of src/styles/scss/global.scss\A \A 71: .opacity-0 {\A 72:   opacity: 0;\A 73: }\A 74: \A 75: .bg-white {\A 76:   background: $white !important;\A 77: }"; }

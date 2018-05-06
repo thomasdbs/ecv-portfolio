@@ -403,6 +403,22 @@
     padding-top: 50vh; }
   .project.line-height {
     line-height: 30; }
+  .project .links div {
+    display: flex;
+    align-items: center;
+    margin: 10px 0; }
+    .project .links div a {
+      font-size: 16px;
+      color: #000000;
+      font-family: GTWalsheimProBold; }
+      .project .links div a:hover::before {
+        border-bottom: solid 2px #000000; }
+      .project .links div a::before {
+        border-bottom: solid 2px #000000; }
+    .project .links div img {
+      width: 13px;
+      margin-left: 10px;
+      margin-bottom: 5px; }
   .project .description {
     display: flex;
     width: 100%;
@@ -501,8 +517,7 @@ a {
     width: 0%;
     left: 0%;
     margin: 0 auto;
-    transition: all 0.5s;
-    z-index: -1; }
+    transition: all 0.5s; }
 
 .opacity-0 {
   opacity: 0; }
