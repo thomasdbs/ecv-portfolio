@@ -214,12 +214,12 @@ class HOME extends Component {
             singleProject:{
 
               title:response.data.title.rendered,
-              subtitle:response.data.acf.subtitle,
-              content:response.data.acf.content,
-              context:response.data.acf.context,
+              subtitle:response.data.acf.subtitle_fr,
+              content:response.data.acf.content_fr,
+              context:response.data.acf.context_fr,
               picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
               year:response.data.acf.year,
-              picture:response.data._embedded['wp:featuredmedia'][0].source_url
+              picture:response.data.acf.picture
             }
           })
 
@@ -280,12 +280,12 @@ class HOME extends Component {
         this.setState({
           singleProject: {
             title:response.data.title.rendered,
-            subtitle:response.data.acf.subtitle,
-            content:response.data.acf.content,
-            context:response.data.acf.context,
+            subtitle:response.data.acf.subtitle_fr,
+            content:response.data.acf.content_fr,
+            context:response.data.acf.context_fr,
             picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
             year:response.data.acf.year,
-            picture:response.data._embedded['wp:featuredmedia'][0].source_url
+            picture:response.data.acf.picture
           }
         })
         document.querySelector('.home-animation').classList.add('none')
@@ -305,6 +305,7 @@ class HOME extends Component {
   hideProject = () => {
     document.querySelector('.project').classList.remove('animation')
     document.querySelector('.project .description').classList.add('bg-white')
+    document.querySelector('.project .pictures').classList.add('bg-white')
 
     setTimeout( () => {
       document.querySelector('.project').classList.add('none')
@@ -366,14 +367,14 @@ class HOME extends Component {
       if (projects) {
         project = projects[Object.keys(projects)[currentProject]]
         title = project.title.rendered
-        subtitle = project.acf.subtitle
-        if (project.acf && project.acf.home_video) {
-          home_video = project.acf.home_video
+        subtitle = project.acf.subtitle_fr
+        if (project.acf && project.acf.video) {
+          home_video = project.acf.video
         }else {
           home_video = null
         }
-        if (project._embedded['wp:featuredmedia'][0].source_url) {
-          home_picture = project._embedded['wp:featuredmedia'][0].source_url
+        if (project.acf.picture) {
+          home_picture = project.acf.picture
         }else {
           home_picture = null
         }
