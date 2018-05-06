@@ -9,10 +9,10 @@ Error: Undefined variable: "$white".
 6:   min-height: 100vh;
 7:   background-color: $white;
 8:   padding: 60px;
-9: }
-10: 
-11: .container-in {
-12:   background-color: $white;
+9: 
+10:   @media(max-width: 1024px) {
+11:     padding: 60px 0;
+12:   }
 
 Backtrace:
 src/styles/scss/container.scss:7
@@ -69,4 +69,4 @@ src/styles/scss/container.scss:7
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$white\".\A         on line 7 of src/styles/scss/container.scss\A \A 2:   display: flex;\A 3:   justify-content: center;\A 4:   align-items: center;\A 5:   flex-direction: column;\A 6:   min-height: 100vh;\A 7:   background-color: $white;\A 8:   padding: 60px;\A 9: }\A 10: \A 11: .container-in {\A 12:   background-color: $white;"; }
+  content: "Error: Undefined variable: \"$white\".\A         on line 7 of src/styles/scss/container.scss\A \A 2:   display: flex;\A 3:   justify-content: center;\A 4:   align-items: center;\A 5:   flex-direction: column;\A 6:   min-height: 100vh;\A 7:   background-color: $white;\A 8:   padding: 60px;\A 9: \A 10:   @media(max-width: 1024px) {\A 11:     padding: 60px 0;\A 12:   }"; }

@@ -11,6 +11,12 @@
     align-items: center;
     cursor: pointer;
 
+    @media(max-width: 1024px) {
+      right:10px;
+      position: fixed;
+    }
+
+
     .nav-icon {
       width: 30px;
       height: 20px;
@@ -84,6 +90,13 @@
     left: 60px;
     top: 0;
 
+    @media(max-width: 1024px) {
+      z-index: 11;
+      position: fixed;
+      left: 10px;
+    }
+
+
     img {
       width: 13px;
     }
@@ -122,6 +135,12 @@
     z-index: 10;
     height: 60px;
     align-items: center;
+
+    @media(max-width: 1024px) {
+      position: fixed;
+      background: $white;
+    }
+
   }
 
   .logo-picture {
@@ -138,6 +157,10 @@
     align-items: center;
     bottom: 0;
     left: 0;
+
+    @media(max-width: 1024px) {
+      display: none;
+    }
 
     span {
       transform: rotate(-90deg);
@@ -159,6 +182,10 @@
     align-items: center;
     bottom: 0;
     right: 0;
+
+    @media(max-width: 1024px) {
+      display: none;
+    }
 
     span {
       transform: rotate(90deg);

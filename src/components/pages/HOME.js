@@ -265,15 +265,17 @@ class HOME extends Component {
     document.querySelector('.hover').classList.add('none')
     document.querySelector('.container-out').style.overflow='hidden'
 
+    let animationTimeout = 0
 
-    document.querySelector('.home-animation').classList.remove('none')
-
-    document.querySelector('#start').style.display='inline'
-    TweenLite.to("#start", 1, {morphSVG:"#wave"})
-    TweenLite.to("#start", 1, {morphSVG:"#end"}).delay(0.6)
+    if (window.innerWidth > 1024) {
+      animationTimeout = 1000
+      document.querySelector('.home-animation').classList.remove('none')
+      document.querySelector('#start').style.display='inline'
+      TweenLite.to("#start", 1, {morphSVG:"#wave"})
+      TweenLite.to("#start", 1, {morphSVG:"#end"}).delay(0.6)
+    }
 
     setTimeout( () => {
-
 
       axios.get(`${config.mainRoute}posts/${id}?_embed`)
       .then((response) => {
@@ -290,7 +292,11 @@ class HOME extends Component {
             picture:response.data.acf.picture
           }
         })
-        document.querySelector('.home-animation').classList.add('none')
+
+        if (window.innerWidth > 1024) {
+          document.querySelector('.home-animation').classList.add('none')
+        }
+
         document.querySelector('.container-out').style.overflow='inherit'
 
         setTimeout( () => {
@@ -300,25 +306,44 @@ class HOME extends Component {
       .catch(error => {
         console.log(error)
       })
-    }, 1000)
+    }, animationTimeout)
 
   }
 
   hideProject = () => {
-    document.querySelector('.project').classList.remove('animation')
-    document.querySelector('.project .description').classList.add('bg-white')
-    document.querySelector('.project .pictures').classList.add('bg-white')
 
-    setTimeout( () => {
-      document.querySelector('.project').classList.add('none')
-      document.querySelector('#start').setAttribute('d', svg_path_start)
-      document.querySelector('#wave').setAttribute('d', svg_path_wave)
-      document.querySelector('#end').setAttribute('d', svg_path_end)
-      document.querySelector('.home-animation').classList.remove('none')
-      document.querySelector('#end').style.display='inline'
-      TweenLite.to("#end", 1, {morphSVG:"#wave"})
-      TweenLite.to("#end", 1, {morphSVG:"#start"}).delay(0.4)
-    }, 1700)
+    let animationTimeout = 400
+
+    if (window.innerWidth > 1024) {
+
+      document.querySelector('.project').classList.remove('animation')
+      document.querySelector('.project .description').classList.add('bg-white')
+      document.querySelector('.project .pictures').classList.add('bg-white')
+
+      animationTimeout = 1700
+
+      setTimeout( () => {
+        document.querySelector('.project').classList.add('none')
+        document.querySelector('#start').setAttribute('d', svg_path_start)
+        document.querySelector('#wave').setAttribute('d', svg_path_wave)
+        document.querySelector('#end').setAttribute('d', svg_path_end)
+        document.querySelector('.home-animation').classList.remove('none')
+        document.querySelector('#end').style.display='inline'
+        TweenLite.to("#end", 1, {morphSVG:"#wave"})
+        TweenLite.to("#end", 1, {morphSVG:"#start"}).delay(0.4)
+      }, animationTimeout)
+
+    }else {
+
+      window.scrollTo(0,0)
+
+      setTimeout( () => {
+        document.querySelector('.project').classList.remove('animation')
+        document.querySelector('.project .description').classList.add('bg-white')
+        document.querySelector('.project .pictures').classList.add('bg-white')
+      }, 100)
+
+    }
 
     setTimeout( () => {
       document.querySelector('.hover').classList.remove('none')
@@ -329,7 +354,10 @@ class HOME extends Component {
       const hover = document.querySelector('.hover')
       hover.addEventListener('mouseover', this.pauseVideo)
       hover.addEventListener('mouseout', this.playVideo)
-      document.querySelector('.home-animation').classList.add('none')
+
+      if (window.innerWidth > 1024) {
+        document.querySelector('.home-animation').classList.add('none')
+      }
 
       const video = document.querySelector('video')
       if (video) {
@@ -337,7 +365,7 @@ class HOME extends Component {
         video.addEventListener('ended', this.goToNext)
       }
 
-    }, 3100)
+    }, animationTimeout+=1400)
 
     setTimeout( () => {
       document.querySelector('.slider-infos').classList.remove('none')
@@ -345,7 +373,7 @@ class HOME extends Component {
       document.querySelector('#wave').setAttribute('d', svg_path_wave)
       document.querySelector('#end').setAttribute('d', svg_path_end)
       document.querySelector('#end').style.display='none'
-    }, 3200)
+    }, animationTimeout+=100)
 
   }
 
@@ -481,15 +509,15 @@ class HOME extends Component {
             )}
 
             <div className="navigation">
-              <div className="previous">
+              <div className="previous" onMouseDown={() => this.changeSingleProject('prev')}>
                 <img src={require('../../img/arrow-left.png')} alt="" />
-                <button className="btn-anim" onMouseDown={() => this.changeSingleProject('prev')}>Projet précédent</button>
+                <button className="btn-anim">Projet précédent</button>
               </div>
               <div className="author">
                 © {(new Date()).getFullYear()} Aurélie Marcuard
               </div>
-              <div className="next">
-                <button className="btn-anim" onMouseDown={() => this.changeSingleProject('next')}>Projet suivant</button>
+              <div className="next" onMouseDown={() => this.changeSingleProject('next')}>
+                <button className="btn-anim">Projet suivant</button>
                 <img src={require('../../img/arrow-right.png')} alt="" />
               </div>
             </div>

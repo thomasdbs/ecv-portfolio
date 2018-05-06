@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$black".
-        on line 28 of src/styles/scss/navbar.scss
+        on line 34 of src/styles/scss/navbar.scss
 
-23:       span {
-24:         display: block;
-25:         position: absolute;
-26:         height: 2px;
-27:         width: 100%;
-28:         background: $black;
-29:         border-radius: 9px;
-30:         opacity: 1;
-31:         left: 0;
-32:         transform: rotate(0deg);
-33:         transition: .25s ease-in-out;
+29:       span {
+30:         display: block;
+31:         position: absolute;
+32:         height: 2px;
+33:         width: 100%;
+34:         background: $black;
+35:         border-radius: 9px;
+36:         opacity: 1;
+37:         left: 0;
+38:         transform: rotate(0deg);
+39:         transition: .25s ease-in-out;
 
 Backtrace:
-src/styles/scss/navbar.scss:28
+src/styles/scss/navbar.scss:34
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/variable.rb:49:in `_perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/script/tree/node.rb:50:in `perform'
 /Library/Ruby/Gems/2.3.0/gems/sass-3.5.5/lib/sass/tree/visitors/perform.rb:402:in `visit_prop'
@@ -102,4 +102,4 @@ src/styles/scss/navbar.scss:28
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$black\".\A         on line 28 of src/styles/scss/navbar.scss\A \A 23:       span {\A 24:         display: block;\A 25:         position: absolute;\A 26:         height: 2px;\A 27:         width: 100%;\A 28:         background: $black;\A 29:         border-radius: 9px;\A 30:         opacity: 1;\A 31:         left: 0;\A 32:         transform: rotate(0deg);\A 33:         transition: .25s ease-in-out;"; }
+  content: "Error: Undefined variable: \"$black\".\A         on line 34 of src/styles/scss/navbar.scss\A \A 29:       span {\A 30:         display: block;\A 31:         position: absolute;\A 32:         height: 2px;\A 33:         width: 100%;\A 34:         background: $black;\A 35:         border-radius: 9px;\A 36:         opacity: 1;\A 37:         left: 0;\A 38:         transform: rotate(0deg);\A 39:         transition: .25s ease-in-out;"; }

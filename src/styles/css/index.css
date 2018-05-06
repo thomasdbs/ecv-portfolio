@@ -6,6 +6,9 @@
   min-height: 100vh;
   background-color: #FFFFFF;
   padding: 60px; }
+  @media (max-width: 1024px) {
+    .container-out {
+      padding: 60px 0; } }
 
 .container-in {
   background-color: #FFFFFF;
@@ -100,6 +103,10 @@
   height: 60px;
   align-items: center;
   cursor: pointer; }
+  @media (max-width: 1024px) {
+    .navbar .nav-button {
+      right: 10px;
+      position: fixed; } }
   .navbar .nav-button .nav-icon {
     width: 30px;
     height: 20px;
@@ -147,6 +154,11 @@
   height: 60px;
   left: 60px;
   top: 0; }
+  @media (max-width: 1024px) {
+    .navbar .go-to-home {
+      z-index: 11;
+      position: fixed;
+      left: 10px; } }
   .navbar .go-to-home img {
     width: 13px; }
   .navbar .go-to-home button {
@@ -170,6 +182,10 @@
   z-index: 10;
   height: 60px;
   align-items: center; }
+  @media (max-width: 1024px) {
+    .navbar .logo {
+      position: fixed;
+      background: #FFFFFF; } }
 .navbar .logo-picture {
   height: 20px; }
 .navbar .author {
@@ -182,6 +198,9 @@
   align-items: center;
   bottom: 0;
   left: 0; }
+  @media (max-width: 1024px) {
+    .navbar .author {
+      display: none; } }
   .navbar .author span {
     transform: rotate(-90deg);
     text-align: center;
@@ -198,6 +217,9 @@
   align-items: center;
   bottom: 0;
   right: 0; }
+  @media (max-width: 1024px) {
+    .navbar .page-active {
+      display: none; } }
   .navbar .page-active span {
     transform: rotate(90deg);
     white-space: nowrap;
@@ -300,6 +322,11 @@
   justify-content: center;
   align-items: center;
   transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
+  @media (max-width: 1024px) {
+    .menu {
+      width: 100vw;
+      height: calc(100vh - 60px);
+      z-index: 20; } }
   .menu.animation {
     transform: scaleY(1); }
   .menu .menu-link {
@@ -307,6 +334,9 @@
     margin: 40px 10px;
     font-size: 60px;
     font-family: GTWalsheimPro; }
+    @media (max-width: 1024px) {
+      .menu .menu-link {
+        font-size: 30px; } }
     .menu .menu-link:hover {
       font-weight: bold; }
       .menu .menu-link:hover::before {
@@ -343,12 +373,21 @@
     transition: 0.4s cubic-bezier(1, 0, 0, 1);
     opacity: 0;
     color: #FFFFFF; }
+    @media (max-width: 1024px) {
+      .home .hover {
+        padding: 20px; } }
     .home .hover h1 {
       font-size: 50px;
       font-weight: bold; }
+      @media (max-width: 1024px) {
+        .home .hover h1 {
+          font-size: 30px; } }
     .home .hover h2 {
       font-size: 25px;
       font-family: GTWalsheimPro; }
+      @media (max-width: 1024px) {
+        .home .hover h2 {
+          font-size: 20px; } }
     .home .hover .see-project {
       display: flex;
       align-items: center; }
@@ -360,6 +399,9 @@
         font-size: 25px;
         color: #FFFFFF;
         font-family: GTWalsheimPro; }
+        @media (max-width: 1024px) {
+          .home .hover .see-project button {
+            font-size: 20px; } }
         .home .hover .see-project button:hover::before {
           border-bottom: solid 2px #FFFFFF; }
         .home .hover .see-project button::before {
@@ -393,6 +435,10 @@
     font-size: 50px;
     font-weight: bold;
     transition: all 1s cubic-bezier(1, 0, 0, 1); }
+    @media (max-width: 1024px) {
+      .project h1 {
+        margin: 20px;
+        font-size: 30px; } }
   .project > div * {
     transition: all 1s cubic-bezier(1, 0, 0, 1); }
   .project.animation {
@@ -426,6 +472,10 @@
     justify-content: space-between;
     background: #f7f7f7;
     transition: background 1s cubic-bezier(1, 0, 0, 1); }
+    @media (max-width: 1024px) {
+      .project .description {
+        padding: 0 20px;
+        flex-direction: column; } }
     .project .description .label {
       font-size: 16px;
       display: block;
@@ -434,10 +484,18 @@
       display: flex;
       flex-direction: column;
       width: 55%; }
+      @media (max-width: 1024px) {
+        .project .description .text-container {
+          width: 100%;
+          order: 1; } }
     .project .description .categories {
       display: flex;
       flex-direction: column;
       width: 30%; }
+      @media (max-width: 1024px) {
+        .project .description .categories {
+          width: 100%;
+          order: 0; } }
     .project .description .text {
       margin: 4px 0 20px 0;
       padding: 0;
@@ -450,9 +508,15 @@
     flex-direction: column;
     align-items: center;
     transition: background 1s cubic-bezier(1, 0, 0, 1); }
+    @media (max-width: 1024px) {
+      .project .pictures {
+        padding: 0 20px; } }
     .project .pictures img {
       margin: 60px 0;
       max-width: 800px; }
+      @media (max-width: 1024px) {
+        .project .pictures img {
+          max-width: 100%; } }
   .project .navigation {
     display: flex;
     justify-content: space-between;
@@ -468,6 +532,9 @@
       font-size: 14px;
       color: #000000;
       font-family: GTWalsheimPro; }
+      @media (max-width: 1024px) {
+        .project .navigation button {
+          display: none; } }
       .project .navigation button:hover::before {
         border-bottom: solid 2px #000000; }
       .project .navigation button::before {

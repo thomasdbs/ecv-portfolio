@@ -6,6 +6,11 @@
   min-height: 100vh;
   background-color: $white;
   padding: 60px;
+
+  @media(max-width: 1024px) {
+    padding: 60px 0;
+  }
+
 }
 
 .container-in {
