@@ -7,7 +7,7 @@ Error: Undefined variable: "$white".
 3:     background: $white;
 4:     width: 100%;
 5:     height: 100%;
-6:     z-index: 1000;
+6:     z-index: 100000000000;
 7:     pointer-events: none;
 8:     overflow: hidden;
 
@@ -66,4 +66,4 @@ src/styles/scss/loader.scss:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$white\".\A         on line 3 of src/styles/scss/loader.scss\A \A 1: .loader {\A 2:     position: fixed;\A 3:     background: $white;\A 4:     width: 100%;\A 5:     height: 100%;\A 6:     z-index: 1000;\A 7:     pointer-events: none;\A 8:     overflow: hidden;"; }
+  content: "Error: Undefined variable: \"$white\".\A         on line 3 of src/styles/scss/loader.scss\A \A 1: .loader {\A 2:     position: fixed;\A 3:     background: $white;\A 4:     width: 100%;\A 5:     height: 100%;\A 6:     z-index: 100000000000;\A 7:     pointer-events: none;\A 8:     overflow: hidden;"; }

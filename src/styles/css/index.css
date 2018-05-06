@@ -23,7 +23,7 @@
   background: #FFFFFF;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 100000000000;
   pointer-events: none;
   overflow: hidden;
   top: 0;
@@ -61,7 +61,11 @@
       background-position: 0; }
   .loader.mini {
     bottom: 0;
-    height: 80px; }
+    height: 80px;
+    top: auto;
+    background: #f7f7f7;
+    margin: 0 60px;
+    width: calc(100vw - 120px); }
     .loader.mini .background {
       width: 40px;
       height: 40px;
@@ -425,7 +429,10 @@
   .project .pictures {
     background-color: #f7f7f7;
     padding: 0 60px;
-    text-align: center; }
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
     .project .pictures img {
       margin: 60px 0;
       max-width: 800px; }

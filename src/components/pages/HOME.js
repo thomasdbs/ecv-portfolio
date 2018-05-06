@@ -190,9 +190,6 @@ class HOME extends Component {
     this.setState({ currentProject:newProject })
     this.smoothScroll(document.documentElement.scrollTop, document.documentElement.scrollTop, newProject)
 
-    // console.log(document.documentElement.scrollTop/(document.documentElement.scrollTop/500));
-    // console.log(document.documentElement.scrollTop/500);
-
   }
 
   smoothScroll = (h, originTop, projectID) => {
@@ -212,9 +209,10 @@ class HOME extends Component {
         axios.get(`${config.mainRoute}posts/${this.state.projects[Object.keys(this.state.projects)[projectID]].id}?_embed`)
         .then((response) => {
 
-          this.setState({ singleProject:
-            {
-              projectLoading:false,
+          this.setState({
+            projectLoading:false,
+            singleProject:{
+
               title:response.data.title.rendered,
               subtitle:response.data.acf.subtitle,
               content:response.data.acf.content,
@@ -240,7 +238,7 @@ class HOME extends Component {
 
         })
 
-      }, 2000)
+      }, 3000)
 
     }
 
@@ -275,14 +273,12 @@ class HOME extends Component {
 
     setTimeout( () => {
 
-      this.setState({ projectLoading:true })
 
       axios.get(`${config.mainRoute}posts/${id}?_embed`)
       .then((response) => {
 
-        this.setState({ singleProject:
-          {
-            projectLoading:false,
+        this.setState({
+          singleProject: {
             title:response.data.title.rendered,
             subtitle:response.data.acf.subtitle,
             content:response.data.acf.content,
@@ -302,7 +298,7 @@ class HOME extends Component {
       .catch(error => {
         console.log(error)
       })
-    }, 1700)
+    }, 1000)
 
   }
 
@@ -352,7 +348,7 @@ class HOME extends Component {
 
   render() {
 
-    const { loading, navbar, projectsCount, currentProject, projects, singleProject } = this.state
+    const { loading, navbar, projectsCount, currentProject, projects, singleProject, projectLoading } = this.state
     let project = null
     let title = null
     let subtitle = null
@@ -438,8 +434,13 @@ class HOME extends Component {
           </svg>
         </div>
 
+        {(projectLoading === true) && (
+          <Loader mini="true" />
+        )}
+
         {(singleProject !== null) && (
           <div className="project">
+
             <h1>{singleProject.title}</h1>
             <div className="description">
               <div className="text-container">
