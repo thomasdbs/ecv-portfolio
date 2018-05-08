@@ -5,7 +5,7 @@
   transform: scaleY(0);
   transform-origin: top;
   top: 60px;
-  z-index: 5;
+  z-index: 1000000000;
   background: $grey;
   display: flex;
   flex-direction: column;
@@ -22,6 +22,44 @@
 
   &.animation {
     transform: scaleY(1);
+  }
+
+  .languages {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: 14px;
+      font-family: GTWalsheimPro;
+      margin: 0 5px 5px 5px;
+    }
+
+    button {
+      color: $black;
+      font-size: 14px;
+      font-family: GTWalsheimPro;
+
+      &:hover {
+
+        font-weight: bold;
+
+        &::before {
+          border-bottom:solid 2px $black;
+        }
+
+      }
+
+      &::before {
+        border-bottom:solid 2px $black;
+      }
+
+    }
+
   }
 
   .menu-link {

@@ -187,7 +187,7 @@
       position: fixed;
       background: #FFFFFF; } }
 .navbar .logo-picture {
-  height: 20px; }
+  height: 30px; }
 .navbar .author {
   position: absolute;
   display: flex;
@@ -315,7 +315,7 @@
   transform: scaleY(0);
   transform-origin: top;
   top: 60px;
-  z-index: 5;
+  z-index: 1000000000;
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
@@ -329,6 +329,28 @@
       z-index: 20; } }
   .menu.animation {
     transform: scaleY(1); }
+  .menu .languages {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .menu .languages span {
+      font-size: 14px;
+      font-family: GTWalsheimPro;
+      margin: 0 5px 5px 5px; }
+    .menu .languages button {
+      color: #000000;
+      font-size: 14px;
+      font-family: GTWalsheimPro; }
+      .menu .languages button:hover {
+        font-weight: bold; }
+        .menu .languages button:hover::before {
+          border-bottom: solid 2px #000000; }
+      .menu .languages button::before {
+        border-bottom: solid 2px #000000; }
   .menu .menu-link {
     color: #000000;
     margin: 40px 10px;
@@ -372,7 +394,8 @@
     padding: 60px;
     transition: 0.4s cubic-bezier(1, 0, 0, 1);
     opacity: 0;
-    color: #FFFFFF; }
+    color: #FFFFFF;
+    cursor: pointer; }
     @media (max-width: 1024px) {
       .home .hover {
         padding: 20px; } }

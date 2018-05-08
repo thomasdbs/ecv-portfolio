@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Language } from '../../config/language'
 
 class Navbar extends Component {
 
@@ -31,7 +32,7 @@ class Navbar extends Component {
           <div className="go-to-home">
             <img src={require('../../img/arrow-left.png')} alt="" />
             <button className="btn-anim" onClick={() => this.props.hideProject()}>
-              Works
+              {Language(this.props.language).works}
             </button>
           </div>
           :

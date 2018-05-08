@@ -7,6 +7,11 @@ export default {
     mainRoute:`https://www.thomasdubois.fr/aurelie/back/wp-json/wp/${apiVersion}/`,
 
     aboutPageID:20,
-    contactPageID:26
+    contactPageID:26,
+
+    fr:{
+      see_project:'Voir le projet'
+    }
+
 
 }

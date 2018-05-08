@@ -6,7 +6,7 @@ Error: Undefined variable: "$grey".
 5:   transform: scaleY(0);
 6:   transform-origin: top;
 7:   top: 60px;
-8:   z-index: 5;
+8:   z-index: 1000000000;
 9:   background: $grey;
 10:   display: flex;
 11:   flex-direction: column;
@@ -69,4 +69,4 @@ src/styles/scss/menu.scss:9
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$grey\".\A         on line 9 of src/styles/scss/menu.scss\A \A 4:   height: calc(100vh - 120px);\A 5:   transform: scaleY(0);\A 6:   transform-origin: top;\A 7:   top: 60px;\A 8:   z-index: 5;\A 9:   background: $grey;\A 10:   display: flex;\A 11:   flex-direction: column;\A 12:   justify-content: center;\A 13:   align-items: center;\A 14:   transition: all 0.6s $easeInOutExpo;"; }
+  content: "Error: Undefined variable: \"$grey\".\A         on line 9 of src/styles/scss/menu.scss\A \A 4:   height: calc(100vh - 120px);\A 5:   transform: scaleY(0);\A 6:   transform-origin: top;\A 7:   top: 60px;\A 8:   z-index: 1000000000;\A 9:   background: $grey;\A 10:   display: flex;\A 11:   flex-direction: column;\A 12:   justify-content: center;\A 13:   align-items: center;\A 14:   transition: all 0.6s $easeInOutExpo;"; }

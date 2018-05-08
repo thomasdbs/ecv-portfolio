@@ -32,6 +32,7 @@
     transition: 0.4s $easeInOutExpo;
     opacity: 0;
     color: $white;
+    cursor: pointer;
 
     @media(max-width: 1024px) {
       padding: 20px;

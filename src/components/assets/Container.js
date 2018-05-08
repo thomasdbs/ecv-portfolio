@@ -38,6 +38,12 @@ class Container extends Component {
       i.classList.add('none')
     })
 
+    const onProject = document.querySelector('.go-to-home')
+    if (onProject) {
+      onProject.classList.remove('none')
+    }
+
+    document.querySelector('.languages').classList.add('none')
 
     setTimeout( () => {
       document.querySelector('.menu').classList.remove('animation')
@@ -58,7 +64,7 @@ class Container extends Component {
 
   render() {
 
-    const { onHome, hideProject, onProject, menuVisible, toggleMenu, children, numProjects, currentProject, projectTitle, goToNext, goToPrev } = this.props
+    const { onHome, language, hideProject, onProject, menuVisible, toggleMenu, children, numProjects, currentProject, projectTitle, goToNext, goToPrev } = this.props
     const { redirect } = this.state
 
     if (redirect === false) {
@@ -77,6 +83,7 @@ class Container extends Component {
             goToPrev={goToPrev}
             onProject={onProject}
             hideProject={hideProject}
+            language={language}
           />
 
           {(menuVisible === true) && (<Menu redirect={this.redirect} />)}

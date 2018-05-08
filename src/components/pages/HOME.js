@@ -5,9 +5,11 @@ import {TweenMax, TweenLite, TimelineLite, Power2} from 'gsap'
 import '../plugins/MorphSVGPlugin'
 
 import config from '../../config/config'
+import { Language } from '../../config/language'
 
 import Container from '../assets/Container'
 import Loader from '../assets/Loader'
+import { CheckLanguage } from '../assets/Sessions'
 
 const svg_path_start = 'm-0.5,1080.5l-2421.0568,852.37141s2421.5568,-1932.87141 2445.75108,-878.45198c469.64406,46.90692 561.66275,-255.62705 1075.17573,-224.37127c513.51298,31.25578 134.30935,266.50318 902.05917,204.43143l-80.92918,46.02041l-1921,0z'
 const svg_path_wave = 'm-0.5,1080.5l-864.68917,689.4304s865.18917,-1769.9304 1284.68917,-1471.99185c146.18046,452.82203 164.45115,-29.45473 681.13535,68.3965c516.68419,97.85123 207.49626,439.90354 953.0476,-75.65151l-133.18295,789.81646l-1921,0z'
@@ -17,6 +19,7 @@ class HOME extends Component {
 
   state = {
     loading:false,
+    language:null,
     projects:null,
     projectsCount:0,
     currentProject:0,
@@ -26,7 +29,13 @@ class HOME extends Component {
     singleProject:null
   }
 
+  componentWillMount() {
+    const language = CheckLanguage()
+    this.setState({ language:language })
+  }
+
   componentDidMount() {
+
 
     if (sessionStorage.getItem("projects") !== null && sessionStorage.getItem("projectsCount") !== null) {
 
@@ -205,6 +214,8 @@ class HOME extends Component {
       this.setState({ projectLoading:true })
       document.querySelector('.project').classList.add('line-height')
 
+      const { language } = this.state
+
       setTimeout( () => {
         axios.get(`${config.mainRoute}posts/${this.state.projects[Object.keys(this.state.projects)[projectID]].id}?_embed`)
         .then((response) => {
@@ -214,9 +225,9 @@ class HOME extends Component {
             singleProject:{
 
               title:response.data.title.rendered,
-              subtitle:response.data.acf.subtitle_fr,
-              content:response.data.acf.content_fr,
-              context:response.data.acf.context_fr,
+              subtitle:response.data.acf[`subtitle_${language}`],
+              content:response.data.acf[`content_${language}`],
+              context:response.data.acf[`context_${language}`],
               picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
               links: JSON.stringify(response.data.acf.links),
               year:response.data.acf.year,
@@ -230,6 +241,7 @@ class HOME extends Component {
               element.classList.remove('opacity-0')
             })
             document.querySelector('.project').classList.remove('line-height')
+
             const video = document.querySelector('video')
             if (video) {
               video.pause()
@@ -280,12 +292,14 @@ class HOME extends Component {
       axios.get(`${config.mainRoute}posts/${id}?_embed`)
       .then((response) => {
 
+        const { language } = this.state
+
         this.setState({
           singleProject: {
             title:response.data.title.rendered,
-            subtitle:response.data.acf.subtitle_fr,
-            content:response.data.acf.content_fr,
-            context:response.data.acf.context_fr,
+            subtitle:response.data.acf[`subtitle_${language}`],
+            content:response.data.acf[`content_${language}`],
+            context:response.data.acf[`context_${language}`],
             picturesGallery: JSON.stringify(response.data.acf.pictures_gallery),
             links: JSON.stringify(response.data.acf.links),
             year:response.data.acf.year,
@@ -379,7 +393,7 @@ class HOME extends Component {
 
   render() {
 
-    const { loading, navbar, projectsCount, currentProject, projects, singleProject, projectLoading } = this.state
+    const { loading, language, navbar, projectsCount, currentProject, projects, singleProject, projectLoading } = this.state
     let project = null
     let title = null
     let subtitle = null
@@ -396,9 +410,11 @@ class HOME extends Component {
     }else {
 
       if (projects) {
+        console.log('coucou');
         project = projects[Object.keys(projects)[currentProject]]
         title = project.title.rendered
-        subtitle = project.acf.subtitle_fr
+        subtitle = project.acf[`subtitle_${language}`]
+        console.log(subtitle);
         if (project.acf && project.acf.video) {
           home_video = project.acf.video
         }else {
@@ -422,7 +438,13 @@ class HOME extends Component {
         if (singleProject.links) {
           const links = JSON.parse(singleProject.links)
           links.forEach((l) => {
-            linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+
+            if (language === 'en') {
+              linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_en}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+            }else {
+              linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+            }
+
           })
         }
       }
@@ -439,6 +461,7 @@ class HOME extends Component {
           goToPrev={this.goToPrev}
           currentProject={currentProject+1}
           hideProject={this.hideProject}
+          language={language}
           projectTitle={title} >
 
           <div className="home">
@@ -451,13 +474,13 @@ class HOME extends Component {
               <img src={home_picture} alt=""/>
             )}
 
-            <div className="hover">
+            <div className="hover" onMouseDown={() => this.showProject(project.id)}>
               <div className="description">
                 <h1>{title}</h1>
                 <h2>{subtitle}</h2>
               </div>
               <div className="see-project">
-                <button className="btn-anim" onMouseDown={() => this.showProject(project.id)}>Voir le projet</button>
+                <button className="btn-anim" onMouseDown={() => this.showProject(project.id)}>{Language(language).see_project}</button>
                 <img src={require('../../img/arrow-right-home-hover.png')} alt=""/>
               </div>
             </div>
@@ -482,7 +505,7 @@ class HOME extends Component {
             <h1>{singleProject.title}</h1>
             <div className="description">
               <div className="text-container">
-                <span className="label">Le projet : </span>
+                <span className="label">{Language(language).the_project} : </span>
                 <p className="text">{singleProject.content}</p>
 
                 {(singleProject.links) && (
@@ -493,11 +516,11 @@ class HOME extends Component {
 
               </div>
               <div className="categories">
-                <span className="label">Le projet : </span>
+                <span className="label">Mission : </span>
                 <p className="text">{singleProject.subtitle}</p>
-                <span className="label">Contexte : </span>
+                <span className="label">{Language(language).context} : </span>
                 <p className="text">{singleProject.context}</p>
-                <span className="label">Année : </span>
+                <span className="label">{Language(language).year} : </span>
                 <p className="text">{singleProject.year}</p>
               </div>
             </div>
@@ -511,13 +534,13 @@ class HOME extends Component {
             <div className="navigation">
               <div className="previous" onMouseDown={() => this.changeSingleProject('prev')}>
                 <img src={require('../../img/arrow-left.png')} alt="" />
-                <button className="btn-anim">Projet précédent</button>
+                <button className="btn-anim">{Language(language).previous}</button>
               </div>
               <div className="author">
                 © {(new Date()).getFullYear()} Aurélie Marcuard
               </div>
               <div className="next" onMouseDown={() => this.changeSingleProject('next')}>
-                <button className="btn-anim">Projet suivant</button>
+                <button className="btn-anim">{Language(language).next}</button>
                 <img src={require('../../img/arrow-right.png')} alt="" />
               </div>
             </div>
