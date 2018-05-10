@@ -5,7 +5,8 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: #FFFFFF;
-  padding: 60px; }
+  padding: 60px;
+  position: relative; }
   @media (max-width: 1024px) {
     .container-out {
       padding: 60px 0; } }

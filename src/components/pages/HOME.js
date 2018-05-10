@@ -48,6 +48,7 @@ class HOME extends Component {
       setTimeout( () => {
         this.captureEndOfVideo()
         this.hoverAnimation()
+        window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
       }, 100)
 
     }else {
@@ -72,6 +73,7 @@ class HOME extends Component {
           setTimeout( () => {
             this.captureEndOfVideo()
             this.hoverAnimation()
+            window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
           }, 100)
 
 
@@ -84,6 +86,15 @@ class HOME extends Component {
 
     }
 
+  }
+
+  detectScroll = (e) => {
+    const delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
+    if (delta > 0) {
+      this.goToNext()
+    }else if (delta < 0) {
+      this.goToPrev()
+    }
   }
 
   captureEndOfVideo = () => {
@@ -167,6 +178,7 @@ class HOME extends Component {
         home.classList.remove('new')
         home.classList.remove('old')
         document.querySelector('.container-in').style.overflow='inherit'
+        window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
       }, 700)
 
       const video = document.querySelector('video')
