@@ -14,6 +14,7 @@ import { CheckLanguage } from '../assets/Sessions'
 const svg_path_start = 'm-0.5,1080.5l-2421.0568,852.37141s2421.5568,-1932.87141 2445.75108,-878.45198c469.64406,46.90692 561.66275,-255.62705 1075.17573,-224.37127c513.51298,31.25578 134.30935,266.50318 902.05917,204.43143l-80.92918,46.02041l-1921,0z'
 const svg_path_wave = 'm-0.5,1080.5l-864.68917,689.4304s865.18917,-1769.9304 1284.68917,-1471.99185c146.18046,452.82203 164.45115,-29.45473 681.13535,68.3965c516.68419,97.85123 207.49626,439.90354 953.0476,-75.65151l-133.18295,789.81646l-1921,0z'
 const svg_path_end = 'm-0.5,1080.5l-1010.77422,-1074.82749s1011.27422,-5.67251 1445.63037,-35.65363c469.64406,46.90692 216.46659,-18.94118 729.97957,12.3146c513.51298,31.25578 7.53843,1.72403 775.28825,-60.34772l-19.12397,1158.51424l-1921,0z'
+const WIDTH = window.innerWidth
 
 class HOME extends Component {
 
@@ -68,8 +69,11 @@ class HOME extends Component {
           sessionStorage.setItem("projects", JSON.stringify(response.data))
           sessionStorage.setItem("projectsCount", Object.keys(response.data).length)
 
-          this.captureEndOfVideo()
-          this.hoverAnimation()
+          setTimeout( () => {
+            this.captureEndOfVideo()
+            this.hoverAnimation()
+          }, 100)
+
 
         })
         .catch(error => {
@@ -110,11 +114,23 @@ class HOME extends Component {
   }
 
   goToNext = () => {
-    this.changeSlide('next')
+    const home = document.querySelector('.home')
+    document.querySelector('.container-in').style.overflow='hidden'
+    home.classList.add('old')
+    setTimeout( () => {
+      home.classList.add('opacity-0')
+      this.changeSlide('next')
+    }, 600)
   }
 
   goToPrev = () => {
-    this.changeSlide('prev')
+    const home = document.querySelector('.home')
+    document.querySelector('.container-in').style.overflow='hidden'
+    home.classList.add('old')
+    setTimeout( () => {
+      home.classList.add('opacity-0')
+      this.changeSlide('prev')
+    }, 600)
   }
 
   changeSlide = (direction) => {
@@ -143,6 +159,16 @@ class HOME extends Component {
     }
 
     setTimeout( () => {
+      const home = document.querySelector('.home')
+      home.classList.add('new')
+
+      setTimeout( () => {
+        home.classList.remove('opacity-0')
+        home.classList.remove('new')
+        home.classList.remove('old')
+        document.querySelector('.container-in').style.overflow='inherit'
+      }, 700)
+
       const video = document.querySelector('video')
       if (video) {
         this.captureEndOfVideo()
@@ -279,7 +305,7 @@ class HOME extends Component {
 
     let animationTimeout = 0
 
-    if (window.innerWidth > 1024) {
+    if (WIDTH > 1024) {
       animationTimeout = 1000
       document.querySelector('.home-animation').classList.remove('none')
       document.querySelector('#start').style.display='inline'
@@ -307,7 +333,7 @@ class HOME extends Component {
           }
         })
 
-        if (window.innerWidth > 1024) {
+        if (WIDTH > 1024) {
           document.querySelector('.home-animation').classList.add('none')
         }
 
@@ -328,7 +354,7 @@ class HOME extends Component {
 
     let animationTimeout = 400
 
-    if (window.innerWidth > 1024) {
+    if (WIDTH > 1024) {
 
       document.querySelector('.project').classList.remove('animation')
       document.querySelector('.project .description').classList.add('bg-white')
@@ -369,7 +395,7 @@ class HOME extends Component {
       hover.addEventListener('mouseover', this.pauseVideo)
       hover.addEventListener('mouseout', this.playVideo)
 
-      if (window.innerWidth > 1024) {
+      if (WIDTH > 1024) {
         document.querySelector('.home-animation').classList.add('none')
       }
 
@@ -410,16 +436,17 @@ class HOME extends Component {
     }else {
 
       if (projects) {
-        console.log('coucou');
+
         project = projects[Object.keys(projects)[currentProject]]
         title = project.title.rendered
         subtitle = project.acf[`subtitle_${language}`]
-        console.log(subtitle);
-        if (project.acf && project.acf.video) {
+
+        if (project.acf && project.acf.video && WIDTH > 1024) {
           home_video = project.acf.video
         }else {
           home_video = null
         }
+
         if (project.acf.picture) {
           home_picture = project.acf.picture
         }else {

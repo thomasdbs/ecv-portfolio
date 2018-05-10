@@ -207,6 +207,31 @@
     white-space: nowrap;
     font-family: GTWalsheimPro;
     margin-top: 100%; }
+.navbar .smartphone-sliders {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  z-index: 100;
+  height: 100vh;
+  align-items: center;
+  bottom: 0; }
+  .navbar .smartphone-sliders.left {
+    left: 0; }
+  .navbar .smartphone-sliders.right {
+    right: 0; }
+  .navbar .smartphone-sliders button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    background: #FFFFFF; }
+    .navbar .smartphone-sliders button img {
+      width: 10px; }
 .navbar .page-active {
   position: absolute;
   display: flex;
@@ -235,13 +260,17 @@
   align-items: center;
   bottom: 0;
   left: 0;
-  font-family: GTWalsheimPro; }
+  font-family: GTWalsheimPro;
+  background: #FFFFFF; }
   .navbar .slider-infos button {
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     align-items: center; }
+    @media (max-width: 1024px) {
+      .navbar .slider-infos button {
+        display: none; } }
     .navbar .slider-infos button .slider-picture {
       height: 10px; }
 
@@ -337,6 +366,9 @@
     display: flex;
     justify-content: center;
     align-items: center; }
+    @media (max-width: 1024px) {
+      .menu .languages {
+        left: 10px; } }
     .menu .languages span {
       font-size: 14px;
       font-family: GTWalsheimPro;
@@ -372,6 +404,24 @@
   height: calc(100vh - 120px);
   overflow: hidden;
   position: relative; }
+  .home.old {
+    animation: old 0.7s; }
+@keyframes old {
+  from {
+    transform: translateX(0);
+    opacity: 1; }
+  to {
+    transform: translateX(-100vw);
+    opacity: 0; } }
+  .home.new {
+    animation: new 0.7s; }
+@keyframes new {
+  from {
+    transform: translateX(100vw);
+    opacity: 0; }
+  to {
+    transform: translateX(0);
+    opacity: 1; } }
   .home:hover .hover {
     opacity: 1; }
   .home video, .home > img {
@@ -398,19 +448,26 @@
     cursor: pointer; }
     @media (max-width: 1024px) {
       .home .hover {
-        padding: 20px; } }
+        padding: 20px;
+        opacity: 1;
+        height: auto;
+        top: auto;
+        bottom: 0; } }
     .home .hover h1 {
       font-size: 50px;
       font-weight: bold; }
       @media (max-width: 1024px) {
         .home .hover h1 {
-          font-size: 30px; } }
+          font-size: 30px;
+          margin-bottom: 5px; } }
     .home .hover h2 {
       font-size: 25px;
       font-family: GTWalsheimPro; }
       @media (max-width: 1024px) {
         .home .hover h2 {
-          font-size: 20px; } }
+          font-size: 20px;
+          margin-top: 5px;
+          margin-bottom: 40px; } }
     .home .hover .see-project {
       display: flex;
       align-items: center; }
@@ -418,6 +475,10 @@
         width: auto;
         height: auto;
         margin: 0 10px; }
+        @media (max-width: 1024px) {
+          .home .hover .see-project img {
+            width: 20px;
+            margin-bottom: 5px; } }
       .home .hover .see-project button {
         font-size: 25px;
         color: #FFFFFF;
@@ -547,7 +608,8 @@
     width: 100%;
     height: 60px;
     font-family: GTWalsheimPro;
-    font-size: 14px; }
+    font-size: 14px;
+    background: #FFFFFF; }
     .project .navigation img {
       width: 13px;
       margin: 0 10px; }

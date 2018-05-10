@@ -5,6 +5,36 @@
   overflow: hidden;
   position: relative;
 
+  &.old {
+    animation: old 0.7s;
+  }
+
+  @keyframes old {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100vw);
+      opacity: 0;
+    }
+  }
+
+  &.new {
+    animation: new 0.7s;
+  }
+
+  @keyframes new {
+    from {
+      transform: translateX(100vw);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
   &:hover .hover {
     opacity: 1;
   }
@@ -36,6 +66,10 @@
 
     @media(max-width: 1024px) {
       padding: 20px;
+      opacity: 1;
+      height: auto;
+      top: auto;
+      bottom: 0;
     }
 
     h1 {
@@ -44,6 +78,7 @@
 
       @media(max-width: 1024px) {
         font-size: 30px;
+        margin-bottom: 5px;
       }
 
     }
@@ -54,6 +89,8 @@
 
       @media(max-width: 1024px) {
         font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 40px;
       }
 
     }
@@ -67,6 +104,12 @@
         width: auto;
         height: auto;
         margin: 0 10px;
+
+        @media(max-width: 1024px) {
+          width: 20px;
+          margin-bottom: 5px;
+        }
+
       }
 
       button {
@@ -285,6 +328,7 @@
     height: 60px;
     font-family: GTWalsheimPro;
     font-size: 14px;
+    background: $white;
 
     img {
       width: 13px;

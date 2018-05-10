@@ -6,6 +6,8 @@ class Navbar extends Component {
 
   render() {
 
+    const WIDTH = window.innerWidth
+
     return (
       <div className="navbar">
 
@@ -40,6 +42,22 @@ class Navbar extends Component {
             <span>Aurélie Marcuard</span>
           </div>
         }
+
+        {(this.props.onHome === true && WIDTH <= 1024 && this.props.onProject === false) && (
+          <div className="smartphone-sliders left">
+            <button onClick={() => this.props.goToPrev()} className="home-slider-button">
+              <img src={require('../../img/arrow-left.png')} alt="" />
+            </button>
+          </div>
+        )}
+
+        {(this.props.onHome === true && WIDTH <= 1024 && this.props.onProject === false) && (
+          <div className="smartphone-sliders right">
+            <button onClick={() => this.props.goToNext()} className="home-slider-button">
+              <img src={require('../../img/arrow-right.png')} alt="" />
+            </button>
+          </div>
+        )}
 
         <div className="logo">
           <Link to="/"><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></Link>
