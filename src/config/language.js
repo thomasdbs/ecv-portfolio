@@ -9,7 +9,10 @@ export const Language = (language) => {
       year:'Année',
       previous:'Projet précédent',
       next:'Projet suivant',
-      works:'Réalisations'
+      works:'Réalisations',
+      not_found_text1:'Oups, cette page n\'existe pas !',
+      not_found_text2:'Par contre j\'ai plein d\'autres projets super cools à voir',
+      not_found_link:'Retour aux projets'
     }
 
   }else {
@@ -21,7 +24,10 @@ export const Language = (language) => {
       year:'Year',
       previous:'Previous project',
       next:'Next project',
-      works:'Works'
+      works:'Works',
+      not_found_text1:'Oops, this page doesn\'t exist',
+      not_found_text2:'By cons I have many other cool projects to see',
+      not_found_link:'Back to projects'
     }
 
   }

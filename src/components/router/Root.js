@@ -12,7 +12,7 @@ const Root = () => {
           <Route exact path="/" component={HOME} />
           <Route exact path="/about" component={ABOUT} />
           <Route exact path="/contact" component={CONTACT} />
-          <Route exact path="/404" component={NOT_FOUND} />
+          <Route component={NOT_FOUND} />
         </Switch>
       </HashRouter>
   )
