@@ -1,12 +1,22 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { CheckLanguage } from './Sessions'
+import { Language } from '../../config/language'
 
 class Menu extends Component {
 
+  state = {
+    language:null
+  }
+
+  componentWillMount() {
+    const language = CheckLanguage()
+    this.setState({ language:language })
+  }
+
   componentDidMount() {
 
-    const language = CheckLanguage()
+    const { language } = this.state
     document.querySelector(`.menu button[data-language="${language}"]`).style.fontFamily='GTWalsheimProBold'
 
     const onProject = document.querySelector('.go-to-home')
@@ -40,6 +50,8 @@ class Menu extends Component {
 
   render() {
 
+    const { language } = this.state
+
     return (
       <div className="menu">
 
@@ -50,13 +62,13 @@ class Menu extends Component {
         </div>
 
         <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/')}>
-          Works
+          {Language(language).nav_works}
         </button>
         <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/about')}>
-          About
+        {Language(language).nav_about}
         </button>
         <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/contact')}>
-          Contact
+        {Language(language).nav_contact}
         </button>
       </div>
     )

@@ -62,15 +62,21 @@ class Container extends Component {
 
   }
 
+  onWheelFunction = (e) => {
+    if (this.props.onWheelFunction) {
+      this.props.onWheelFunction(e)
+    }
+  }
+
   render() {
 
-    const { onHome, language, hideProject, onProject, menuVisible, toggleMenu, children, numProjects, currentProject, projectTitle, goToNext, goToPrev } = this.props
+    const { onHome, onWheelFunction, show, language, hideProject, onProject, menuVisible, toggleMenu, children, numProjects, currentProject, projectTitle, goToNext, goToPrev } = this.props
     const { redirect } = this.state
 
     if (redirect === false) {
       return (
 
-        <div className="container-out">
+        <div className="container-out" onWheel={(e) => this.onWheelFunction(e)}>
 
           <Navbar
             onHome={onHome}
@@ -84,6 +90,7 @@ class Container extends Component {
             onProject={onProject}
             hideProject={hideProject}
             language={language}
+            show={show}
           />
 
           {(menuVisible === true) && (<Menu redirect={this.redirect} />)}

@@ -37,6 +37,10 @@ class Navbar extends Component {
               {Language(this.props.language).works}
             </button>
           </div>
+          : (this.props.show === false) ?
+          <div className="author">
+            <span></span>
+          </div>
           :
           <div className="author">
             <span>Aurélie Marcuard</span>

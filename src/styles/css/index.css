@@ -213,7 +213,7 @@
   display: flex;
   justify-content: center;
   width: 40px;
-  z-index: 100;
+  z-index: 10;
   height: 100vh;
   align-items: center;
   bottom: 0; }
@@ -283,30 +283,98 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 60px 55% 20px 40px;
-  transition: all 1s cubic-bezier(1, 0, 0, 1); }
+  padding: 60px 43% 20px 40px;
+  transition: margin 1s cubic-bezier(1, 0, 0, 1); }
+  @media (max-width: 1024px) {
+    .about {
+      padding: 0;
+      margin-bottom: -60px; } }
   .about.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
   .about.animation {
-    margin-top: 0; }
+    margin-top: 0;
+    height: auto;
+    min-height: calc(100vh - 180px); }
   .about h1 {
     font-size: 50px;
     font-weight: bold; }
-  .about h1, .about div {
+    @media (max-width: 1024px) {
+      .about h1 {
+        margin: 20px 20px 0 20px !important;
+        font-size: 30px; } }
+  .about h1, .about .container {
     line-height: 20;
-    transition: all 1s cubic-bezier(1, 0, 0, 1); }
-    .about h1.animation, .about div.animation {
+    transition: all 1s;
+    margin: 0; }
+    .about h1.animation, .about .container.animation {
       line-height: 1.4; }
+  @media (max-width: 1024px) {
+    .about .container {
+      margin: 0 20px 20px 20px;
+      text-align: justify; } }
+  .about .container h2 {
+    font-size: 25px;
+    font-family: GTWalsheimPro;
+    margin-top: 10px;
+    margin-bottom: 40px; }
+    @media (max-width: 1024px) {
+      .about .container h2 {
+        font-size: 20px; } }
+  .about .container p {
+    font-size: 16px;
+    font-family: GTWalsheimPro; }
+  .about .container a {
+    color: #000000;
+    text-decoration: underline; }
+  .about .container h3 {
+    font-size: 25px;
+    font-family: GTWalsheimPro; }
+    @media (max-width: 1024px) {
+      .about .container h3 {
+        font-size: 20px; } }
+    .about .container h3 a {
+      text-decoration: none; }
+      .about .container h3 a:hover::before {
+        border-bottom: solid 2px #000000; }
+      .about .container h3 a::before {
+        border-bottom: solid 2px #000000; }
   .about img {
-    position: absolute;
+    position: fixed;
     top: 120vh;
-    right: 40px;
-    max-height: calc(100vh - 120px);
-    max-width: 50vw;
-    transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
+    right: 100px;
+    height: calc(100vh - 120px);
+    max-width: calc(40vw - 100px);
+    transition: all 0.6s cubic-bezier(1, 0, 0, 1);
+    object-fit: cover; }
+    @media (max-width: 1024px) {
+      .about img {
+        position: relative;
+        top: auto !important;
+        right: auto;
+        height: calc(100vh - 130px);
+        width: 100vw;
+        max-width: none; } }
     .about img.animation {
-      top: 0; }
+      top: 60px; }
+  .about .no_picture {
+    position: fixed;
+    top: 120vh;
+    right: 100px;
+    height: calc(100vh - 120px);
+    width: calc(40vw - 100px);
+    transition: all 0.6s cubic-bezier(1, 0, 0, 1);
+    background: #232222; }
+    @media (max-width: 1024px) {
+      .about .no_picture {
+        position: relative;
+        top: auto !important;
+        height: calc(100vh - 130px);
+        right: auto;
+        width: 100vw;
+        max-width: none; } }
+    .about .no_picture.animation {
+      top: 60px; }
 
 .contact {
   background-color: #f7f7f7;
@@ -316,27 +384,183 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 60px 40px 20px 53%;
+  padding: 60px 40px 20px 43%;
   transition: all 1s cubic-bezier(1, 0, 0, 1); }
+  @media (max-width: 1024px) {
+    .contact {
+      padding: 0;
+      margin-bottom: -60px; } }
   .contact.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
   .contact.animation {
-    margin-top: 0; }
-  .contact h1, .contact div {
+    margin-top: 0;
+    height: auto;
+    min-height: calc(100vh - 180px); }
+  .contact .modal {
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(1, 0, 0, 1); }
+    .contact .modal.animation {
+      opacity: 1; }
+    .contact .modal .modal-container {
+      max-width: 80%;
+      width: 600px;
+      background: #FFFFFF;
+      padding: 30px; }
+      .contact .modal .modal-container .text-container {
+        background: #FFFFFF;
+        padding: 60px;
+        position: relative;
+        transform: scale(0);
+        transition: all 0.7s cubic-bezier(1, 0, 0, 1); }
+        @media (max-width: 1024px) {
+          .contact .modal .modal-container .text-container {
+            padding: 100px 20px; } }
+        .contact .modal .modal-container .text-container.animation {
+          transform: scale(1);
+          background: #f7f7f7; }
+        .contact .modal .modal-container .text-container h2 {
+          font-size: 50px; }
+          @media (max-width: 1024px) {
+            .contact .modal .modal-container .text-container h2 {
+              font-size: 30px; } }
+        .contact .modal .modal-container .text-container p {
+          font-family: GTWalsheimPro;
+          font-size: 16px; }
+        .contact .modal .modal-container .text-container div {
+          display: flex;
+          align-items: center; }
+          .contact .modal .modal-container .text-container div button {
+            font-size: 25px;
+            color: #000000;
+            font-family: GTWalsheimPro; }
+            @media (max-width: 1024px) {
+              .contact .modal .modal-container .text-container div button {
+                font-size: 20px; } }
+            .contact .modal .modal-container .text-container div button:hover::before {
+              border-bottom: solid 2px #000000; }
+            .contact .modal .modal-container .text-container div button::before {
+              border-bottom: solid 2px #000000; }
+          .contact .modal .modal-container .text-container div img {
+            width: 20px;
+            margin-left: 10px; }
+        .contact .modal .modal-container .text-container > img {
+          width: 116px;
+          max-width: 100%;
+          position: absolute;
+          bottom: -10px;
+          right: 5px;
+          opacity: 0;
+          transform: translateY(-200px);
+          transition: all 0.7s cubic-bezier(1, 0, 0, 1); }
+          .contact .modal .modal-container .text-container > img.animation {
+            opacity: 1;
+            transform: translateY(0); }
+  .contact h1, .contact .container {
     line-height: 20;
     transition: all 1s cubic-bezier(1, 0, 0, 1); }
-    .contact h1.animation, .contact div.animation {
+    .contact h1.animation, .contact .container.animation {
       line-height: 1.4; }
-  .contact img {
-    position: absolute;
+  .contact h1 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 10px; }
+    @media (max-width: 1024px) {
+      .contact h1 {
+        margin: 20px 20px 0 20px;
+        font-size: 30px; } }
+  @media (max-width: 1024px) {
+    .contact .container {
+      margin: 0 20px 20px 20px;
+      text-align: justify; } }
+  .contact .container form {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0; }
+    .contact .container form input, .contact .container form textarea, .contact .container form input::placeholder, .contact .container form textarea::placeholder {
+      color: #918e8d;
+      width: 100%;
+      margin: 10px 0;
+      font-size: 25px;
+      font-family: GTWalsheimPro;
+      background: none;
+      border: none; }
+      @media (max-width: 1024px) {
+        .contact .container form input, .contact .container form textarea, .contact .container form input::placeholder, .contact .container form textarea::placeholder {
+          font-size: 20px; } }
+    .contact .container form .submit {
+      display: flex;
+      align-items: center; }
+      .contact .container form .submit button {
+        color: #000000;
+        font-size: 25px;
+        font-family: GTWalsheimPro; }
+        @media (max-width: 1024px) {
+          .contact .container form .submit button {
+            font-size: 20px; } }
+        .contact .container form .submit button:hover::before {
+          border-bottom: solid 2px #000000; }
+        .contact .container form .submit button::before {
+          border-bottom: solid 2px #000000; }
+      .contact .container form .submit img {
+        width: 20px;
+        margin-left: 15px; }
+  .contact .container p {
+    font-size: 16px;
+    font-family: GTWalsheimPro; }
+  .contact .container a {
+    font-size: 16px;
+    font-family: GTWalsheimPro;
+    color: #000000;
+    margin: 0 15px 0 0;
+    text-decoration: underline; }
+  .contact .absolute-picture {
+    position: fixed;
     top: 120vh;
-    left: 40px;
-    max-height: calc(100vh - 120px);
-    max-width: 50vw;
+    left: 100px;
+    height: calc(100vh - 120px);
+    max-width: calc(40vw - 100px);
+    object-fit: cover;
     transition: all 0.6s cubic-bezier(1, 0, 0, 1); }
-    .contact img.animation {
-      top: 0; }
+    .contact .absolute-picture.animation {
+      top: 60px; }
+    @media (max-width: 1024px) {
+      .contact .absolute-picture {
+        position: relative;
+        top: auto !important;
+        left: auto;
+        height: calc(100vh - 130px);
+        width: 100vw;
+        max-width: none; } }
+  .contact .no_picture {
+    position: fixed;
+    top: 120vh;
+    left: 100px;
+    height: calc(100vh - 120px);
+    width: calc(40vw - 100px);
+    transition: all 0.6s cubic-bezier(1, 0, 0, 1);
+    background: #232222; }
+    @media (max-width: 1024px) {
+      .contact .no_picture {
+        position: relative;
+        top: auto !important;
+        left: auto;
+        height: calc(100vh - 130px);
+        width: 100vw;
+        max-width: none; } }
+    .contact .no_picture.animation {
+      top: 60px; }
 
 .menu {
   position: fixed;
@@ -592,12 +816,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: background 1s cubic-bezier(1, 0, 0, 1); }
+    transition: background 1s cubic-bezier(1, 0, 0, 1);
+    padding-top: 100px; }
     @media (max-width: 1024px) {
       .project .pictures {
         padding: 0 20px; } }
+    .project .pictures .picture-title {
+      text-align: left;
+      font-size: 16px;
+      font-family: GTWalsheimProBold;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 0 5px 0; }
+    .project .pictures .picture-description {
+      text-align: justify;
+      font-size: 16px;
+      font-family: GTWalsheimPro;
+      width: 100%;
+      max-width: 800px;
+      margin: 5px 0 10px 0; }
     .project .pictures img {
-      margin: 60px 0;
+      margin: 0 0 100px 0;
       max-width: 800px; }
       @media (max-width: 1024px) {
         .project .pictures img {
@@ -718,7 +957,7 @@ a {
 @font-face {
   font-family: GTWalsheimProBold;
   src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf"); }
-.btn-anim {
+.btn-anim, .about .container h3 a {
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
@@ -728,10 +967,10 @@ a {
   border: none;
   padding: 0;
   padding-bottom: 5px; }
-  .btn-anim:hover::before {
+  .btn-anim:hover::before, .about .container h3 a:hover::before {
     width: 100%;
     left: 0%; }
-  .btn-anim::before {
+  .btn-anim::before, .about .container h3 a::before {
     content: " ";
     display: block;
     position: absolute;

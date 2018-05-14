@@ -6,8 +6,13 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 60px 55% 20px 40px;
-  transition: all 1s $easeInOutExpo;
+  padding: 60px 43% 20px 40px;
+  transition: margin 1s $easeInOutExpo;
+
+  @media(max-width: 1024px) {
+    padding: 0;
+    margin-bottom: -60px;
+  }
 
   &.animated {
     height: auto;
@@ -16,32 +21,134 @@
 
   &.animation {
     margin-top: 0;
+    height: auto;
+    min-height: calc(100vh - 180px);
   }
 
   h1 {
     font-size: 50px;
     font-weight: bold;
+
+    @media(max-width: 1024px) {
+      margin: 20px 20px 0 20px !important;
+      font-size: 30px;
+    }
+
   }
 
-  h1, div {
+  h1, .container {
     line-height: 20;
-    transition: all 1s $easeInOutExpo;
+    transition: all 1s;
+    margin: 0;
 
     &.animation {
       line-height: 1.4;
     }
   }
 
+  .container {
+
+    @media(max-width: 1024px) {
+      margin: 0 20px 20px 20px;
+      text-align: justify;
+    }
+
+    h2 {
+      font-size: 25px;
+      font-family: GTWalsheimPro;
+      margin-top: 10px;
+      margin-bottom: 40px;
+
+      @media(max-width: 1024px) {
+        font-size: 20px;
+      }
+
+    }
+
+    p {
+      font-size: 16px;
+      font-family: GTWalsheimPro;
+    }
+
+    a {
+      color: $black;
+      text-decoration: underline;
+    }
+
+    h3 {
+      font-size: 25px;
+      font-family: GTWalsheimPro;
+
+      @media(max-width: 1024px) {
+        font-size: 20px;
+      }
+
+      a {
+
+        text-decoration: none;
+        @extend .btn-anim;
+
+        &:hover {
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
+        }
+
+        &::before {
+          border-bottom:solid 2px $black;
+        }
+
+      }
+
+    }
+
+  }
+
   img {
-    position: absolute;
+    position: fixed;
     top: 120vh;
-    right: 40px;
-    max-height: calc(100vh - 120px);
-    max-width: 50vw;
+    right: 100px;
+    height: calc(100vh - 120px);
+    max-width: calc(40vw - 100px);
     transition: all 0.6s $easeInOutExpo;
+    object-fit: cover;
+
+    @media(max-width: 1024px) {
+      position: relative;
+      top: auto !important;
+      right: auto;
+      height: calc(100vh - 130px);
+      width: 100vw;
+      max-width: none;
+    }
 
     &.animation {
-      top: 0;
+      top: 60px;
+    }
+  }
+
+  .no_picture {
+    position: fixed;
+    top: 120vh;
+    right: 100px;
+    height: calc(100vh - 120px);
+    width: calc(40vw - 100px);
+    transition: all 0.6s $easeInOutExpo;
+    background: $no_picture;
+
+    @media(max-width: 1024px) {
+      position: relative;
+      top: auto !important;
+      height: calc(100vh - 130px);
+      right: auto;
+      width: 100vw;
+      max-width: none;
+    }
+
+    &.animation {
+      top: 60px;
     }
   }
 

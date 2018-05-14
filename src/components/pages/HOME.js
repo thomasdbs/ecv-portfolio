@@ -27,12 +27,26 @@ class HOME extends Component {
     navbar:false,
     pictureAnimation:false,
     projectLoading:false,
-    singleProject:null
+    singleProject:null,
+    wheel:0
   }
 
   componentWillMount() {
     const language = CheckLanguage()
     this.setState({ language:language })
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener('mousewheel', (event) => this.detectScroll(event), true)
+    const video = document.querySelector('video')
+    if (video) {
+      video.removeEventListener('ended', this.goToNext)
+    }
+    const hover = document.querySelector('.hover')
+    if (hover) {
+      hover.removeEventListener('mouseover', this.pauseVideo)
+      hover.removeEventListener('mouseout', this.playVideo)
+    }
   }
 
   componentDidMount() {
@@ -48,7 +62,6 @@ class HOME extends Component {
       setTimeout( () => {
         this.captureEndOfVideo()
         this.hoverAnimation()
-        window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
       }, 100)
 
     }else {
@@ -73,7 +86,6 @@ class HOME extends Component {
           setTimeout( () => {
             this.captureEndOfVideo()
             this.hoverAnimation()
-            window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
           }, 100)
 
 
@@ -89,11 +101,20 @@ class HOME extends Component {
   }
 
   detectScroll = (e) => {
+    const { wheel, singleProject } = this.state
     const delta = ((e.deltaY || -e.wheelDelta || e.detail) >> 10) || 1;
-    if (delta > 0) {
-      this.goToNext()
-    }else if (delta < 0) {
-      this.goToPrev()
+    if (wheel === 0 && singleProject === null) {
+      this.setState({ wheel: delta })
+    }
+  }
+
+  componentDidUpdate(prevProps,prevState) {
+    if (prevState.wheel === 0 && this.state.wheel !== 0) {
+      if (this.state.wheel > 0) {
+        this.goToNext()
+      }else if (this.state.wheel < 0) {
+        this.goToPrev()
+      }
     }
   }
 
@@ -146,6 +167,7 @@ class HOME extends Component {
 
   changeSlide = (direction) => {
 
+
     const video = document.querySelector('video')
     const picture = document.querySelector('.container-out')
 
@@ -178,7 +200,9 @@ class HOME extends Component {
         home.classList.remove('new')
         home.classList.remove('old')
         document.querySelector('.container-in').style.overflow='inherit'
-        window.addEventListener('mousewheel', (event) => this.detectScroll(event), { once: true })
+        setTimeout( () => {
+          this.setState({ wheel:0 })
+        }, 1000)
       }, 700)
 
       const video = document.querySelector('video')
@@ -470,21 +494,31 @@ class HOME extends Component {
         onProject = true
         if (singleProject.picturesGallery) {
           const picturesGallery = JSON.parse(singleProject.picturesGallery)
-          picturesGallery.forEach((picture) => {
-            picturesDOM += `<img src="${picture.picture}" alt="" />`
-          })
+          if (picturesGallery) {
+            picturesGallery.forEach((picture) => {
+              if (picture[`title_${language}`]) {
+                picturesDOM += `<p class="picture-title">${picture[`title_${language}`]}</p>`
+              }
+              if (picture[`description_${language}`]) {
+                picturesDOM += `<p class="picture-description">${picture[`description_${language}`]}</p>`
+              }
+              picturesDOM += `<img src="${picture.picture}" alt="" />`
+            })
+          }
         }
         if (singleProject.links) {
           const links = JSON.parse(singleProject.links)
-          links.forEach((l) => {
+          if (links) {
+            links.forEach((l) => {
 
-            if (language === 'en') {
-              linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_en}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
-            }else {
-              linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
-            }
+              if (language === 'en') {
+                linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_en}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+              }else {
+                linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+              }
 
-          })
+            })
+          }
         }
       }
 
@@ -501,9 +535,10 @@ class HOME extends Component {
           currentProject={currentProject+1}
           hideProject={this.hideProject}
           language={language}
+          onWheelFunction={this.detectScroll}
           projectTitle={title} >
 
-          <div className="home">
+          <div className="home" onWheel={(e) => this.detectScroll(e)}>
 
             {(home_video !== null) && (
               <video autoPlay src={home_video} type="video/mp4" />
@@ -547,7 +582,7 @@ class HOME extends Component {
                 <span className="label">{Language(language).the_project} : </span>
                 <p className="text">{singleProject.content}</p>
 
-                {(singleProject.links) && (
+                {(linksDOM !== "") && (
                   <div className="links">
                     {renderHTML(linksDOM)}
                   </div>
@@ -564,7 +599,7 @@ class HOME extends Component {
               </div>
             </div>
 
-            {(singleProject.picturesGallery) && (
+            {(picturesDOM !== "") && (
               <div className="pictures">
                 {renderHTML(picturesDOM)}
               </div>
