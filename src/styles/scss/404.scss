@@ -88,12 +88,16 @@
         font-size: 20px;
       }
 
-      &:hover {
+      @media(min-width: 1025px) {
 
-        &::before {
-          border-bottom:solid 2px $black;
+        &:hover {
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
         }
-
+        
       }
 
       &::before {

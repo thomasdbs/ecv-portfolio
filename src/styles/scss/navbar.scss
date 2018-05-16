@@ -111,10 +111,14 @@
       margin-left: 10px;
       padding-top: 5px;
 
-      &:hover {
+      @media(min-width: 1025px) {
 
-        &::before {
-          border-bottom:solid 2px $black;
+        &:hover {
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
         }
 
       }
@@ -178,11 +182,14 @@
 
     span {
       transform: rotate(-90deg);
-      backface-visibility: hidden;
+      backface-visibility: initial;
       text-align: center;
       white-space: nowrap;
       font-family: GTWalsheimPro;
-      margin-top: 100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      display: flex;
+      justify-content: center;
     }
 
   }
@@ -240,10 +247,13 @@
 
     span {
       transform: rotate(90deg);
-      backface-visibility: hidden;
+      backface-visibility: initial;
       white-space: nowrap;
       font-family: GTWalsheimPro;
-      margin-top: -100%;
+      margin-top: auto;
+      margin-bottom: auto;
+      display: flex;
+      justify-content: center;
     }
 
   }

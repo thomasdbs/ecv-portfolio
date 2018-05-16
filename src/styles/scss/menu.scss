@@ -48,12 +48,16 @@
       font-size: 14px;
       font-family: GTWalsheimPro;
 
-      &:hover {
+      @media(min-width: 1025px) {
 
-        font-weight: bold;
+        &:hover {
 
-        &::before {
-          border-bottom:solid 2px $black;
+          font-weight: bold;
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
         }
 
       }
@@ -86,15 +90,19 @@
         font-size: 30px;
       }
 
-      &:hover {
+      @media(min-width: 1025px) {
+        &:hover {
 
-        font-weight: bold;
+          font-weight: bold;
 
-        &::before {
-          border-bottom:solid 2px $black;
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
         }
-
       }
+
+
 
       &::before {
         border-bottom:solid 2px $black;

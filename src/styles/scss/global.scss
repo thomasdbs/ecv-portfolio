@@ -20,17 +20,17 @@ a {
 }
 
 @font-face {
-    font-family: GTWalsheimPro;
-    // src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Regular.ttf');
-    // src: url('../../fonts/gt_walsheim_pro/gt-walsheim-web.ttf');
-    src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Light.ttf');
+  font-family: GTWalsheimPro;
+  // src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Regular.ttf');
+  // src: url('../../fonts/gt_walsheim_pro/gt-walsheim-web.ttf');
+  src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Light.ttf');
 }
 
 @font-face {
-    font-family: GTWalsheimProBold;
-    // src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Regular.ttf');
-    // src: url('../../fonts/gt_walsheim_pro/gt-walsheim-web.ttf');
-    src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf');
+  font-family: GTWalsheimProBold;
+  // src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Regular.ttf');
+  // src: url('../../fonts/gt_walsheim_pro/gt-walsheim-web.ttf');
+  src: url('../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf');
 }
 
 
@@ -45,21 +45,25 @@ a {
   padding: 0;
   padding-bottom: 5px;
 
-  &:hover {
+  @media(min-width: 1025px) {
 
-    &::before {
-      animation: draw 0.5s forwards;
-    }
+    &:hover {
 
-    @keyframes draw {
-      from {
-        width:0;
+      &::before {
+        animation: draw 0.5s forwards;
       }
-      to {
-        width:100%;
-      }
-    }
 
+      @keyframes draw {
+        from {
+          width:0;
+        }
+        to {
+          width:100%;
+        }
+      }
+
+    }
+    
   }
 
   &::before {

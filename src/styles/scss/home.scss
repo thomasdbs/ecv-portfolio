@@ -121,6 +121,8 @@
           font-size: 20px;
         }
 
+        @media(min-width: 1025px) {
+
         &:hover {
 
           &::before {
@@ -129,8 +131,11 @@
 
         }
 
+        }
+
         &::before {
           border-bottom:solid 2px $white;
+          width: 100%;
         }
 
       }
@@ -218,6 +223,8 @@
         color: $black;
         font-family: GTWalsheimProBold;
 
+        @media(min-width: 1025px) {
+
         &:hover {
 
           &::before {
@@ -226,8 +233,11 @@
 
         }
 
+        }
+
         &::before {
           border-bottom:solid 2px $black;
+          width: 100%;
         }
 
       }
@@ -374,6 +384,7 @@
 
       &::before {
         border-bottom:solid 2px $black;
+        width: 100%;
       }
 
     }

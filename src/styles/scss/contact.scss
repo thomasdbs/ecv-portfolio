@@ -97,16 +97,21 @@
               font-size: 20px;
             }
 
-            &:hover {
+            @media(min-width: 1025px) {
 
-              &::before {
-                border-bottom:solid 2px $black;
+              &:hover {
+
+                &::before {
+                  border-bottom:solid 2px $black;
+                }
+
               }
 
             }
 
             &::before {
               border-bottom:solid 2px $black;
+              width: 100%;
             }
 
           }
@@ -211,16 +216,21 @@
             font-size: 20px;
           }
 
-          &:hover {
+          @media(min-width: 1025px) {
 
-            &::before {
-              border-bottom:solid 2px $black;
+            &:hover {
+
+              &::before {
+                border-bottom:solid 2px $black;
+              }
+
             }
 
           }
 
           &::before {
             border-bottom:solid 2px $black;
+            width: 100%;
           }
 
         }
@@ -244,7 +254,26 @@
       font-family: GTWalsheimPro;
       color: $black;
       margin: 0 15px 0 0;
-      text-decoration: underline;
+      @extend .btn-anim;
+      text-decoration: none;
+
+      @media(min-width: 1025px) {
+
+        &:hover {
+
+          &::before {
+            border-bottom:solid 2px $black;
+          }
+
+        }
+
+      }
+
+      &::before {
+        border-bottom:solid 2px $black;
+        width: 100% !important;
+      }
+
     }
 
   }

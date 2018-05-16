@@ -172,8 +172,9 @@
     z-index: 20;
     margin-left: 10px;
     padding-top: 5px; }
-    .navbar .go-to-home button:hover::before {
-      border-bottom: solid 2px #000000; }
+    @media (min-width: 1025px) {
+      .navbar .go-to-home button:hover::before {
+        border-bottom: solid 2px #000000; } }
     .navbar .go-to-home button::before {
       border-bottom: solid 2px #000000; }
     @media (max-width: 1024px) {
@@ -214,11 +215,14 @@
       display: none; } }
   .navbar .author span {
     transform: rotate(-90deg);
-    backface-visibility: hidden;
+    backface-visibility: initial;
     text-align: center;
     white-space: nowrap;
     font-family: GTWalsheimPro;
-    margin-top: 100%; }
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center; }
 .navbar .smartphone-sliders {
   position: absolute;
   display: flex;
@@ -259,10 +263,13 @@
       display: none; } }
   .navbar .page-active span {
     transform: rotate(90deg);
-    backface-visibility: hidden;
+    backface-visibility: initial;
     white-space: nowrap;
     font-family: GTWalsheimPro;
-    margin-top: -100%; }
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center; }
 .navbar .slider-infos {
   position: absolute;
   display: flex;
@@ -336,8 +343,13 @@
     font-size: 16px;
     font-family: GTWalsheimPro; }
   .about .container a {
-    color: #000000;
-    text-decoration: underline; }
+    text-decoration: none; }
+    @media (min-width: 1025px) {
+      .about .container a:hover::before {
+        border-bottom: solid 2px #000000; } }
+    .about .container a::before {
+      border-bottom: solid 2px #000000;
+      width: 100% !important; }
   .about .container div {
     display: flex;
     align-items: center;
@@ -352,8 +364,9 @@
       @media (max-width: 1024px) {
         .about .container div a {
           font-size: 20px; } }
-      .about .container div a:hover::before {
-        border-bottom: solid 2px #000000; }
+      @media (min-width: 1025px) {
+        .about .container div a:hover::before {
+          border-bottom: solid 2px #000000; } }
       .about .container div a::before {
         border-bottom: solid 2px #000000;
         width: 100%; }
@@ -470,10 +483,12 @@
             @media (max-width: 1024px) {
               .contact .modal .modal-container .text-container div button {
                 font-size: 20px; } }
-            .contact .modal .modal-container .text-container div button:hover::before {
-              border-bottom: solid 2px #000000; }
+            @media (min-width: 1025px) {
+              .contact .modal .modal-container .text-container div button:hover::before {
+                border-bottom: solid 2px #000000; } }
             .contact .modal .modal-container .text-container div button::before {
-              border-bottom: solid 2px #000000; }
+              border-bottom: solid 2px #000000;
+              width: 100%; }
           .contact .modal .modal-container .text-container div img {
             width: 20px;
             margin-left: 10px; }
@@ -535,10 +550,12 @@
         @media (max-width: 1024px) {
           .contact .container form .submit button {
             font-size: 20px; } }
-        .contact .container form .submit button:hover::before {
-          border-bottom: solid 2px #000000; }
+        @media (min-width: 1025px) {
+          .contact .container form .submit button:hover::before {
+            border-bottom: solid 2px #000000; } }
         .contact .container form .submit button::before {
-          border-bottom: solid 2px #000000; }
+          border-bottom: solid 2px #000000;
+          width: 100%; }
       .contact .container form .submit img {
         width: 20px;
         margin-left: 15px; }
@@ -550,7 +567,13 @@
     font-family: GTWalsheimPro;
     color: #000000;
     margin: 0 15px 0 0;
-    text-decoration: underline; }
+    text-decoration: none; }
+    @media (min-width: 1025px) {
+      .contact .container a:hover::before {
+        border-bottom: solid 2px #000000; } }
+    .contact .container a::before {
+      border-bottom: solid 2px #000000;
+      width: 100% !important; }
   .contact .absolute-picture {
     position: fixed;
     top: 120vh;
@@ -628,10 +651,11 @@
       color: #000000;
       font-size: 14px;
       font-family: GTWalsheimPro; }
-      .menu .languages button:hover {
-        font-weight: bold; }
-        .menu .languages button:hover::before {
-          border-bottom: solid 2px #000000; }
+      @media (min-width: 1025px) {
+        .menu .languages button:hover {
+          font-weight: bold; }
+          .menu .languages button:hover::before {
+            border-bottom: solid 2px #000000; } }
       .menu .languages button::before {
         border-bottom: solid 2px #000000; }
   .menu .items {
@@ -650,10 +674,11 @@
       @media (max-width: 1024px) {
         .menu .items .menu-link {
           font-size: 30px; } }
-      .menu .items .menu-link:hover {
-        font-weight: bold; }
-        .menu .items .menu-link:hover::before {
-          border-bottom: solid 2px #000000; }
+      @media (min-width: 1025px) {
+        .menu .items .menu-link:hover {
+          font-weight: bold; }
+          .menu .items .menu-link:hover::before {
+            border-bottom: solid 2px #000000; } }
       .menu .items .menu-link::before {
         border-bottom: solid 2px #000000; }
 
@@ -745,10 +770,12 @@
         @media (max-width: 1024px) {
           .home .hover .see-project button {
             font-size: 20px; } }
-        .home .hover .see-project button:hover::before {
-          border-bottom: solid 2px #FFFFFF; }
+        @media (min-width: 1025px) {
+          .home .hover .see-project button:hover::before {
+            border-bottom: solid 2px #FFFFFF; } }
         .home .hover .see-project button::before {
-          border-bottom: solid 2px #FFFFFF; }
+          border-bottom: solid 2px #FFFFFF;
+          width: 100%; }
 
 .home-animation {
   position: absolute;
@@ -800,10 +827,12 @@
       font-size: 16px;
       color: #000000;
       font-family: GTWalsheimProBold; }
-      .project .links div a:hover::before {
-        border-bottom: solid 2px #000000; }
+      @media (min-width: 1025px) {
+        .project .links div a:hover::before {
+          border-bottom: solid 2px #000000; } }
       .project .links div a::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 2px #000000;
+        width: 100%; }
     .project .links div img {
       width: 13px;
       margin-left: 10px;
@@ -898,7 +927,8 @@
       .project .navigation button:hover::before {
         border-bottom: solid 2px #000000; }
       .project .navigation button::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 2px #000000;
+        width: 100%; }
 
 .not_found {
   height: calc(100vh - 80px);
@@ -964,8 +994,9 @@
       @media (max-width: 1024px) {
         .not_found .container button {
           font-size: 20px; } }
-      .not_found .container button:hover::before {
-        border-bottom: solid 2px #000000; }
+      @media (min-width: 1025px) {
+        .not_found .container button:hover::before {
+          border-bottom: solid 2px #000000; } }
       .not_found .container button::before {
         border-bottom: solid 2px #000000; }
 
@@ -992,7 +1023,7 @@ a {
 @font-face {
   font-family: GTWalsheimProBold;
   src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf"); }
-.btn-anim {
+.btn-anim, .about .container a, .contact .container a {
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
@@ -1002,14 +1033,15 @@ a {
   border: none;
   padding: 0;
   padding-bottom: 5px; }
-  .btn-anim:hover::before {
-    animation: draw 0.5s forwards; }
-@keyframes draw {
-  from {
-    width: 0; }
-  to {
-    width: 100%; } }
-  .btn-anim::before {
+  @media (min-width: 1025px) {
+    .btn-anim:hover::before, .about .container a:hover::before, .contact .container a:hover::before {
+      animation: draw 0.5s forwards; }
+    @keyframes draw {
+      from {
+        width: 0; }
+      to {
+        width: 100%; } } }
+  .btn-anim::before, .about .container a::before, .contact .container a::before {
     content: " ";
     display: block;
     position: absolute;
