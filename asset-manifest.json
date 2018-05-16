@@ -1,8 +1,10 @@
 {
-  "main.css": "static/css/main.88a37fd0.css",
-  "main.css.map": "static/css/main.88a37fd0.css.map",
-  "main.js": "static/js/main.03d291cd.js",
-  "main.js.map": "static/js/main.03d291cd.js.map",
+  "main.css": "static/css/main.a5eb0b24.css",
+  "main.css.map": "static/css/main.a5eb0b24.css.map",
+  "main.js": "static/js/main.5283f793.js",
+  "main.js.map": "static/js/main.5283f793.js.map",
   "static/media/GT-Walsheim-Pro-Bold.ttf": "static/media/GT-Walsheim-Pro-Bold.788063c8.ttf",
-  "static/media/GT-Walsheim-Pro-Light.ttf": "static/media/GT-Walsheim-Pro-Light.338160d6.ttf"
+  "static/media/GT-Walsheim-Pro-Light.ttf": "static/media/GT-Walsheim-Pro-Light.338160d6.ttf",
+  "static/media/cat-1-404@3x.png": "static/media/cat-1-404@3x.4c309bea.png",
+  "static/media/cat-2-404@3x.png": "static/media/cat-2-404@3x.aa391544.png"
 }
