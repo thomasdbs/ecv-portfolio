@@ -56,20 +56,23 @@ class Menu extends Component {
       <div className="menu">
 
         <div className="languages none">
-          <button data-language="fr" className="btn-anim" onMouseDown={() => this.changeLanguage('fr')}>FR</button>
+          <button data-language="fr" className="btn-anim" onClick={() => this.changeLanguage('fr')}>FR</button>
           <span>/</span>
-          <button data-language="en" className="btn-anim" onMouseDown={() => this.changeLanguage('en')}>EN</button>
+          <button data-language="en" className="btn-anim" onClick={() => this.changeLanguage('en')}>EN</button>
         </div>
 
-        <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/')}>
-          {Language(language).nav_works}
-        </button>
-        <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/about')}>
-        {Language(language).nav_about}
-        </button>
-        <button className="menu-link none btn-anim" onMouseDown={() => this.props.redirect('/contact')}>
-        {Language(language).nav_contact}
-        </button>
+        <div className="items">
+          <button className="menu-link none btn-anim" onClick={() => this.props.redirect('/')}>
+            {Language(language).nav_works}
+          </button>
+          <button className="menu-link none btn-anim" onClick={() => this.props.redirect('/about')}>
+          {Language(language).nav_about}
+          </button>
+          <button className="menu-link none btn-anim" onClick={() => this.props.redirect('/contact')}>
+          {Language(language).nav_contact}
+          </button>
+        </div>
+
       </div>
     )
 

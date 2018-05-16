@@ -66,19 +66,35 @@
 
   }
 
-  .menu-link {
-    color: $black;
-    margin: 40px 10px;
-    font-size: 60px;
-    font-family: GTWalsheimPro;
+  .items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     @media(max-width: 1024px) {
-      font-size: 30px;
+      margin-top: -100px;
     }
 
-    &:hover {
+    .menu-link {
+      color: $black;
+      margin: 40px 10px;
+      font-size: 60px;
+      font-family: GTWalsheimPro;
 
-      font-weight: bold;
+      @media(max-width: 1024px) {
+        font-size: 30px;
+      }
+
+      &:hover {
+
+        font-weight: bold;
+
+        &::before {
+          border-bottom:solid 2px $black;
+        }
+
+      }
 
       &::before {
         border-bottom:solid 2px $black;
@@ -86,10 +102,8 @@
 
     }
 
-    &::before {
-      border-bottom:solid 2px $black;
-    }
-
   }
+
+
 
 }

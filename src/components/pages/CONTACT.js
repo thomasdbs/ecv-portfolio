@@ -149,7 +149,12 @@ class ABOUT extends Component {
 
       return (
 
-        <Container show={show} onHome={false} menuVisible={navbar} toggleMenu={this.toggleMenu}>
+        <Container
+          show={show}
+          onHome={false}
+          menuVisible={navbar}
+          path={this.props.location.pathname}
+          toggleMenu={this.toggleMenu}>
 
           {(title !== null) && (
             <div className="contact">
@@ -168,7 +173,7 @@ class ABOUT extends Component {
                       <p>{Language(language).mail_sended_p1}</p>
                       <p>{Language(language).mail_sended_p2}</p>
                       <div>
-                        <button onMouseDown={() => this.redirect()} className="btn-anim">{Language(language).not_found_link}</button>
+                        <button onClick={() => this.redirect()} className="btn-anim">{Language(language).not_found_link}</button>
                         <img src={require('../../img/arrow-right.png')} alt="" />
                       </div>
                       <img src={require('../../img/cat-merci@3x.png')} alt="" />

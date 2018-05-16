@@ -99,6 +99,8 @@
 
     img {
       width: 13px;
+      cursor: pointer;
+      z-index: 20;
     }
 
     button {
@@ -121,6 +123,10 @@
         border-bottom:solid 2px $black;
       }
 
+      @media(max-width: 1024px) {
+        display: none;
+      }
+
     }
 
   }
@@ -141,11 +147,19 @@
       background: $white;
     }
 
+    .logo-picture {
+      height: 30px;
+    }
+
+    button {
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+
   }
 
-  .logo-picture {
-    height: 30px;
-  }
+
 
   .author {
     position: absolute;
@@ -164,6 +178,7 @@
 
     span {
       transform: rotate(-90deg);
+      backface-visibility: hidden;
       text-align: center;
       white-space: nowrap;
       font-family: GTWalsheimPro;
@@ -225,6 +240,7 @@
 
     span {
       transform: rotate(90deg);
+      backface-visibility: hidden;
       white-space: nowrap;
       font-family: GTWalsheimPro;
       margin-top: -100%;

@@ -109,12 +109,10 @@ class HOME extends Component {
   }
 
   componentDidUpdate(prevProps,prevState) {
-    if (prevState.wheel === 0 && this.state.wheel !== 0) {
-      if (this.state.wheel > 0) {
+    if (prevState.wheel === 0 && this.state.wheel === 1) {
         this.goToNext()
-      }else if (this.state.wheel < 0) {
+    }else if (prevState.wheel === 0 && this.state.wheel === -1) {
         this.goToPrev()
-      }
     }
   }
 
@@ -321,6 +319,9 @@ class HOME extends Component {
 
   showProject = (id) => {
 
+
+    this.setState({ wheel: 1000 })
+
     const hover = document.querySelector('.hover')
     if (hover) {
       hover.removeEventListener('mouseover', this.pauseVideo)
@@ -449,6 +450,7 @@ class HOME extends Component {
       document.querySelector('#wave').setAttribute('d', svg_path_wave)
       document.querySelector('#end').setAttribute('d', svg_path_end)
       document.querySelector('#end').style.display='none'
+      this.setState({ wheel: 0 })
     }, animationTimeout+=100)
 
   }
@@ -536,6 +538,7 @@ class HOME extends Component {
           hideProject={this.hideProject}
           language={language}
           onWheelFunction={this.detectScroll}
+          path={this.props.location.pathname}
           projectTitle={title} >
 
           <div className="home" onWheel={(e) => this.detectScroll(e)}>
@@ -548,13 +551,13 @@ class HOME extends Component {
               <img src={home_picture} alt=""/>
             )}
 
-            <div className="hover" onMouseDown={() => this.showProject(project.id)}>
+            <div className="hover" onClick={() => this.showProject(project.id)}>
               <div className="description">
                 <h1>{title}</h1>
                 <h2>{subtitle}</h2>
               </div>
               <div className="see-project">
-                <button className="btn-anim" onMouseDown={() => this.showProject(project.id)}>{Language(language).see_project}</button>
+                <button className="btn-anim" onClick={() => this.showProject(project.id)}>{Language(language).see_project}</button>
                 <img src={require('../../img/arrow-right-home-hover.png')} alt=""/>
               </div>
             </div>
@@ -606,14 +609,14 @@ class HOME extends Component {
             )}
 
             <div className="navigation">
-              <div className="previous" onMouseDown={() => this.changeSingleProject('prev')}>
+              <div className="previous" onClick={() => this.changeSingleProject('prev')}>
                 <img src={require('../../img/arrow-left.png')} alt="" />
                 <button className="btn-anim">{Language(language).previous}</button>
               </div>
               <div className="author">
                 © {(new Date()).getFullYear()} Aurélie Marcuard
               </div>
-              <div className="next" onMouseDown={() => this.changeSingleProject('next')}>
+              <div className="next" onClick={() => this.changeSingleProject('next')}>
                 <button className="btn-anim">{Language(language).next}</button>
                 <img src={require('../../img/arrow-right.png')} alt="" />
               </div>

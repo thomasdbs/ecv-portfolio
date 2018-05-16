@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import renderHTML from 'react-render-html'
+import { Link } from 'react-router-dom'
 
 import config from '../../config/config'
 import { CheckLanguage } from '../assets/Sessions'
+import { Language } from '../../config/language'
 import Container from '../assets/Container'
 
 class ABOUT extends Component {
@@ -13,7 +15,8 @@ class ABOUT extends Component {
     title:null,
     content:null,
     picture:null,
-    language:null
+    language:null,
+    cv:null
   }
 
   componentWillMount() {
@@ -28,6 +31,7 @@ class ABOUT extends Component {
       this.setState({
         title:response.data.title.rendered,
         content:response.data.acf[`content_${this.state.language}`],
+        cv:response.data.acf.url_cv,
         picture:response.data._embedded['wp:featuredmedia']
       })
       this.animatePage()
@@ -78,7 +82,7 @@ class ABOUT extends Component {
 
   render() {
 
-    const { navbar, content, title, picture } = this.state
+    const { navbar, content, title, picture, cv, language } = this.state
 
     let show = false
 
@@ -88,7 +92,12 @@ class ABOUT extends Component {
 
     return (
 
-      <Container show={show} onHome={false} menuVisible={this.state.navbar} toggleMenu={this.toggleMenu}>
+      <Container
+        show={show}
+        onHome={false}
+        menuVisible={navbar}
+        path={this.props.location.pathname}
+        toggleMenu={this.toggleMenu}>
 
         {(content !== null) && (
           <div className="about">
@@ -102,6 +111,13 @@ class ABOUT extends Component {
             <h1>{title}</h1>
             <div className="container">
               {renderHTML(content)}
+
+              {(cv) && (
+                <div>
+                  <a className="btn-anim" href={cv} target="_blank">{Language(language).download_resume} </a>
+                  <img src={require('../../img/arrow-right.png')} alt="" />
+                </div>
+              )}
             </div>
 
           </div>

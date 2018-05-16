@@ -48,8 +48,16 @@ a {
   &:hover {
 
     &::before {
-      width:100%;
-      left:0%;
+      animation: draw 0.5s forwards;
+    }
+
+    @keyframes draw {
+      from {
+        width:0;
+      }
+      to {
+        width:100%;
+      }
     }
 
   }

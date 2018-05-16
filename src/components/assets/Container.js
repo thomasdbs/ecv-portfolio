@@ -50,15 +50,27 @@ class Container extends Component {
     }, 100)
   }
 
+
   redirect = (url) => {
 
-    document.querySelector('.container-in').classList.add('none')
 
-    this.hideMenu()
+    const { path, onHome, onProject, hideProject } = this.props
 
-    setTimeout( () => {
-      this.setState({ redirect:url })
-    }, 700)
+    if (path !== url) {
+
+      document.querySelector('.container-in').classList.add('none')
+      this.hideMenu()
+      setTimeout( () => {
+        this.setState({ redirect:url })
+      }, 700)
+
+    }else {
+      this.toggleMenu()
+      if (path === url && onHome && onProject) {
+        hideProject()
+      }
+    }
+
 
   }
 

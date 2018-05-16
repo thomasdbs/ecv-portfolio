@@ -50,7 +50,6 @@
 
     @media(max-width: 1024px) {
       margin: 0 20px 20px 20px;
-      text-align: justify;
     }
 
     h2 {
@@ -75,18 +74,25 @@
       text-decoration: underline;
     }
 
-    h3 {
-      font-size: 25px;
-      font-family: GTWalsheimPro;
+    div {
+
+      display: flex;
+      align-items: center;
+      margin-top: 120px;
 
       @media(max-width: 1024px) {
-        font-size: 20px;
+        margin-top: 20px;
       }
 
       a {
 
         text-decoration: none;
-        @extend .btn-anim;
+        font-size: 25px;
+        font-family: GTWalsheimPro;
+
+        @media(max-width: 1024px) {
+          font-size: 20px;
+        }
 
         &:hover {
 
@@ -98,15 +104,28 @@
 
         &::before {
           border-bottom:solid 2px $black;
+          width: 100%;
         }
 
       }
+
+      img {
+        width: 20px;
+        margin-left: 10px;
+      }
+
+    }
+
+    h3 {
+
+
+
 
     }
 
   }
 
-  img {
+  > img {
     position: fixed;
     top: 120vh;
     right: 100px;

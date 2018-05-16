@@ -22,7 +22,8 @@ export const Language = (language) => {
       form_placeholder_submit:'Envoyer',
       mail_sended_h2:'Merci !',
       mail_sended_p1:'Merci pour votre message !',
-      mail_sended_p2:'J\'y répondrai dès que possible.'
+      mail_sended_p2:'J\'y répondrai dès que possible.',
+      download_resume:'Téléchargez mon CV'
     }
 
   }else {
@@ -47,7 +48,8 @@ export const Language = (language) => {
       form_placeholder_submit:'Send',
       mail_sended_h2:'Thank you !',
       mail_sended_p1:'Thank you for your message !',
-      mail_sended_p2:'I will answer as soon as possible.'
+      mail_sended_p2:'I will answer as soon as possible.',
+      download_resume:'Download my resume'
     }
 
   }

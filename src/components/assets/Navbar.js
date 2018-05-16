@@ -32,7 +32,7 @@ class Navbar extends Component {
 
         {(this.props.onProject === true) ?
           <div className="go-to-home">
-            <img src={require('../../img/arrow-left.png')} alt="" />
+            <img src={require('../../img/arrow-left.png')} alt="" onClick={() => this.props.hideProject()} />
             <button className="btn-anim" onClick={() => this.props.hideProject()}>
               {Language(this.props.language).works}
             </button>
@@ -64,7 +64,11 @@ class Navbar extends Component {
         )}
 
         <div className="logo">
-          <Link to="/"><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></Link>
+          {(this.props.onProject === false) ?
+            <Link to="/"><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></Link>
+            :
+            <button onClick={() => this.props.hideProject()}><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></button>
+          }
         </div>
 
         {(this.props.onHome === true && this.props.onProject === false) && (

@@ -73,6 +73,7 @@
     .loader.mini .background {
       width: 40px;
       height: 40px;
+      background: #f7f7f7;
       border-radius: 20px; }
       .loader.mini .background .inner {
         width: 40px;
@@ -161,7 +162,9 @@
       position: fixed;
       left: 10px; } }
   .navbar .go-to-home img {
-    width: 13px; }
+    width: 13px;
+    cursor: pointer;
+    z-index: 20; }
   .navbar .go-to-home button {
     font-size: 14px;
     color: #000000;
@@ -173,6 +176,9 @@
       border-bottom: solid 2px #000000; }
     .navbar .go-to-home button::before {
       border-bottom: solid 2px #000000; }
+    @media (max-width: 1024px) {
+      .navbar .go-to-home button {
+        display: none; } }
 .navbar .logo {
   position: absolute;
   display: flex;
@@ -187,8 +193,12 @@
     .navbar .logo {
       position: fixed;
       background: #FFFFFF; } }
-.navbar .logo-picture {
-  height: 30px; }
+  .navbar .logo .logo-picture {
+    height: 30px; }
+  .navbar .logo button {
+    border: none;
+    background: none;
+    cursor: pointer; }
 .navbar .author {
   position: absolute;
   display: flex;
@@ -204,6 +214,7 @@
       display: none; } }
   .navbar .author span {
     transform: rotate(-90deg);
+    backface-visibility: hidden;
     text-align: center;
     white-space: nowrap;
     font-family: GTWalsheimPro;
@@ -248,6 +259,7 @@
       display: none; } }
   .navbar .page-active span {
     transform: rotate(90deg);
+    backface-visibility: hidden;
     white-space: nowrap;
     font-family: GTWalsheimPro;
     margin-top: -100%; }
@@ -311,8 +323,7 @@
       line-height: 1.4; }
   @media (max-width: 1024px) {
     .about .container {
-      margin: 0 20px 20px 20px;
-      text-align: justify; } }
+      margin: 0 20px 20px 20px; } }
   .about .container h2 {
     font-size: 25px;
     font-family: GTWalsheimPro;
@@ -327,19 +338,29 @@
   .about .container a {
     color: #000000;
     text-decoration: underline; }
-  .about .container h3 {
-    font-size: 25px;
-    font-family: GTWalsheimPro; }
+  .about .container div {
+    display: flex;
+    align-items: center;
+    margin-top: 120px; }
     @media (max-width: 1024px) {
-      .about .container h3 {
-        font-size: 20px; } }
-    .about .container h3 a {
-      text-decoration: none; }
-      .about .container h3 a:hover::before {
+      .about .container div {
+        margin-top: 20px; } }
+    .about .container div a {
+      text-decoration: none;
+      font-size: 25px;
+      font-family: GTWalsheimPro; }
+      @media (max-width: 1024px) {
+        .about .container div a {
+          font-size: 20px; } }
+      .about .container div a:hover::before {
         border-bottom: solid 2px #000000; }
-      .about .container h3 a::before {
-        border-bottom: solid 2px #000000; }
-  .about img {
+      .about .container div a::before {
+        border-bottom: solid 2px #000000;
+        width: 100%; }
+    .about .container div img {
+      width: 20px;
+      margin-left: 10px; }
+  .about > img {
     position: fixed;
     top: 120vh;
     right: 100px;
@@ -348,14 +369,14 @@
     transition: all 0.6s cubic-bezier(1, 0, 0, 1);
     object-fit: cover; }
     @media (max-width: 1024px) {
-      .about img {
+      .about > img {
         position: relative;
         top: auto !important;
         right: auto;
         height: calc(100vh - 130px);
         width: 100vw;
         max-width: none; } }
-    .about img.animation {
+    .about > img.animation {
       top: 60px; }
   .about .no_picture {
     position: fixed;
@@ -431,7 +452,8 @@
           transform: scale(1);
           background: #f7f7f7; }
         .contact .modal .modal-container .text-container h2 {
-          font-size: 50px; }
+          font-size: 50px;
+          margin-top: 0; }
           @media (max-width: 1024px) {
             .contact .modal .modal-container .text-container h2 {
               font-size: 30px; } }
@@ -488,14 +510,18 @@
     display: flex;
     flex-direction: column;
     margin: 50px 0; }
+    .contact .container form input, .contact .container form textarea {
+      color: #000000; }
+    .contact .container form input::placeholder, .contact .container form textarea::placeholder {
+      color: #918e8d; }
     .contact .container form input, .contact .container form textarea, .contact .container form input::placeholder, .contact .container form textarea::placeholder {
-      color: #918e8d;
       width: 100%;
       margin: 10px 0;
       font-size: 25px;
       font-family: GTWalsheimPro;
       background: none;
-      border: none; }
+      border: none;
+      padding: 0; }
       @media (max-width: 1024px) {
         .contact .container form input, .contact .container form textarea, .contact .container form input::placeholder, .contact .container form textarea::placeholder {
           font-size: 20px; } }
@@ -608,20 +634,28 @@
           border-bottom: solid 2px #000000; }
       .menu .languages button::before {
         border-bottom: solid 2px #000000; }
-  .menu .menu-link {
-    color: #000000;
-    margin: 40px 10px;
-    font-size: 60px;
-    font-family: GTWalsheimPro; }
+  .menu .items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
     @media (max-width: 1024px) {
-      .menu .menu-link {
-        font-size: 30px; } }
-    .menu .menu-link:hover {
-      font-weight: bold; }
-      .menu .menu-link:hover::before {
+      .menu .items {
+        margin-top: -100px; } }
+    .menu .items .menu-link {
+      color: #000000;
+      margin: 40px 10px;
+      font-size: 60px;
+      font-family: GTWalsheimPro; }
+      @media (max-width: 1024px) {
+        .menu .items .menu-link {
+          font-size: 30px; } }
+      .menu .items .menu-link:hover {
+        font-weight: bold; }
+        .menu .items .menu-link:hover::before {
+          border-bottom: solid 2px #000000; }
+      .menu .items .menu-link::before {
         border-bottom: solid 2px #000000; }
-    .menu .menu-link::before {
-      border-bottom: solid 2px #000000; }
 
 .home {
   background-color: #f7f7f7;
@@ -783,7 +817,7 @@
     transition: background 1s cubic-bezier(1, 0, 0, 1); }
     @media (max-width: 1024px) {
       .project .description {
-        padding: 0 20px;
+        padding: 0 20px 40px 20px;
         flex-direction: column; } }
     .project .description .label {
       font-size: 16px;
@@ -840,7 +874,8 @@
       max-width: 800px; }
       @media (max-width: 1024px) {
         .project .pictures img {
-          max-width: 100%; } }
+          max-width: 100%;
+          margin-bottom: 30px; } }
   .project .navigation {
     display: flex;
     justify-content: space-between;
@@ -866,9 +901,9 @@
         border-bottom: solid 2px #000000; }
 
 .not_found {
-  height: 100vh;
-  width: 100vw;
-  padding: 40px;
+  height: calc(100vh - 80px);
+  width: calc(100vw - 80px);
+  margin: 40px;
   background: #f7f7f7;
   display: flex;
   justify-content: center;
@@ -957,7 +992,7 @@ a {
 @font-face {
   font-family: GTWalsheimProBold;
   src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf"); }
-.btn-anim, .about .container h3 a {
+.btn-anim {
   display: inline-block;
   cursor: pointer;
   text-decoration: none;
@@ -967,10 +1002,14 @@ a {
   border: none;
   padding: 0;
   padding-bottom: 5px; }
-  .btn-anim:hover::before, .about .container h3 a:hover::before {
-    width: 100%;
-    left: 0%; }
-  .btn-anim::before, .about .container h3 a::before {
+  .btn-anim:hover::before {
+    animation: draw 0.5s forwards; }
+@keyframes draw {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+  .btn-anim::before {
     content: " ";
     display: block;
     position: absolute;
