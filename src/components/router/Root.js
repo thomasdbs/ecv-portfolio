@@ -7,14 +7,14 @@ import NOT_FOUND from '../pages/NOT_FOUND'
 
 const Root = () => {
   return (
-      <HashRouter>
-        <Switch>
-          <Route exact path="/" component={HOME} />
-          <Route exact path="/about" component={ABOUT} />
-          <Route exact path="/contact" component={CONTACT} />
-          <Route component={NOT_FOUND} />
-        </Switch>
-      </HashRouter>
+    <HashRouter>
+      <Switch>
+        <Route exact path="/" component={HOME} />
+        <Route exact path="/about" component={ABOUT} />
+        <Route exact path="/contact" component={CONTACT} />
+        <Route component={NOT_FOUND} />
+      </Switch>
+    </HashRouter>
   )
 }
 

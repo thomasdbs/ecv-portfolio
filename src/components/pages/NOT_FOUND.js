@@ -66,7 +66,10 @@ class NOT_FOUND extends Component {
             <h1>404</h1>
             <p>{Language(language).not_found_text1}</p>
             <p>{Language(language).not_found_text2}</p>
-            <button onClick={() => this.redirect()} className="btn-anim">{Language(language).not_found_link}</button>
+            <button onClick={() => this.redirect()} className="btn-anim">
+              {Language(language).not_found_link}
+              <img src={require('../../img/arrow-right.png')} alt="" />
+            </button>
 
             <img src={require('../../img/cat-2-404@3x.png')} alt="" className="two" />
 

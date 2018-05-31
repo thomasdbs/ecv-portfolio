@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Language } from '../../config/language'
+import renderHTML from 'react-render-html'
 
 class Navbar extends Component {
 
@@ -64,10 +65,12 @@ class Navbar extends Component {
         )}
 
         <div className="logo">
-          {(this.props.onProject === false) ?
-            <Link to="/"><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></Link>
-            :
+          {(this.props.onHome === true && this.props.onProject === false) ?
+            <img src={require('../../img/logo.png')} alt="" className="logo-picture" />
+            : (this.props.onHome === true == this.props.onProject === true) ?
             <button onClick={() => this.props.hideProject()}><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></button>
+            :
+            <Link to="/"><img src={require('../../img/logo.png')} alt="" className="logo-picture" /></Link>
           }
         </div>
 

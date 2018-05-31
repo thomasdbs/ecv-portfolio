@@ -116,7 +116,7 @@
         &:hover {
 
           &::before {
-            border-bottom:solid 2px $black;
+            border-bottom:solid 1px $black;
           }
 
         }
@@ -124,7 +124,7 @@
       }
 
       &::before {
-        border-bottom:solid 2px $black;
+        border-bottom:solid 1px $black;
       }
 
       @media(max-width: 1024px) {

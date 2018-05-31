@@ -284,7 +284,7 @@ class HOME extends Component {
             projectLoading:false,
             singleProject:{
 
-              title:response.data.title.rendered,
+              title:response.data.acf[`title_${language}`],
               subtitle:response.data.acf[`subtitle_${language}`],
               content:response.data.acf[`content_${language}`],
               context:response.data.acf[`context_${language}`],
@@ -359,7 +359,7 @@ class HOME extends Component {
 
         this.setState({
           singleProject: {
-            title:response.data.title.rendered,
+            title:response.data.acf[`title_${language}`],
             subtitle:response.data.acf[`subtitle_${language}`],
             content:response.data.acf[`content_${language}`],
             context:response.data.acf[`context_${language}`],
@@ -476,7 +476,7 @@ class HOME extends Component {
       if (projects) {
 
         project = projects[Object.keys(projects)[currentProject]]
-        title = project.title.rendered
+        title = project.acf[`title_${language}`]
         subtitle = project.acf[`subtitle_${language}`]
 
         if (project.acf && project.acf.video && WIDTH > 1024) {
@@ -514,9 +514,9 @@ class HOME extends Component {
             links.forEach((l) => {
 
               if (language === 'en') {
-                linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_en}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+                linksDOM += `<div><a class="btn-anim" target="_blank" href="${l.link}">${l.title_en}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
               }else {
-                linksDOM += `<div><a class="btn-anim" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
+                linksDOM += `<div><a class="btn-anim" target="_blank" href="${l.link}">${l.title_fr}</a><img src=${require('../../img/arrow-right.png')} alt="" /></div>`
               }
 
             })

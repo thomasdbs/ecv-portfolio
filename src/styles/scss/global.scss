@@ -36,6 +36,7 @@ a {
 
 .btn-anim {
   display:inline-block;
+  color: $black;
   cursor: pointer;
   text-decoration:none;
   position:relative;
@@ -48,6 +49,8 @@ a {
   @media(min-width: 1025px) {
 
     &:hover {
+
+      color: $black;
 
       &::before {
         animation: draw 0.5s forwards;
@@ -63,7 +66,7 @@ a {
       }
 
     }
-    
+
   }
 
   &::before {

@@ -10,6 +10,8 @@
   @media (max-width: 1024px) {
     .container-out {
       padding: 60px 0; } }
+  .container-out.responsive {
+    padding: 60px 40px; }
 
 .container-in {
   background-color: #FFFFFF;
@@ -174,9 +176,9 @@
     padding-top: 5px; }
     @media (min-width: 1025px) {
       .navbar .go-to-home button:hover::before {
-        border-bottom: solid 2px #000000; } }
+        border-bottom: solid 1px #000000; } }
     .navbar .go-to-home button::before {
-      border-bottom: solid 2px #000000; }
+      border-bottom: solid 1px #000000; }
     @media (max-width: 1024px) {
       .navbar .go-to-home button {
         display: none; } }
@@ -307,7 +309,7 @@
   @media (max-width: 1024px) {
     .about {
       padding: 0;
-      margin-bottom: -60px; } }
+      background-color: #FFFFFF; } }
   .about.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
@@ -320,7 +322,7 @@
     font-weight: bold; }
     @media (max-width: 1024px) {
       .about h1 {
-        margin: 20px 20px 0 20px !important;
+        margin: 20px 0 0 0 !important;
         font-size: 30px; } }
   .about h1, .about .container {
     line-height: 20;
@@ -330,7 +332,7 @@
       line-height: 1.4; }
   @media (max-width: 1024px) {
     .about .container {
-      margin: 0 20px 20px 20px; } }
+      margin: 0 0 20px 0; } }
   .about .container h2 {
     font-size: 25px;
     font-family: GTWalsheimPro;
@@ -343,12 +345,12 @@
     font-size: 16px;
     font-family: GTWalsheimPro; }
   .about .container a {
-    text-decoration: none; }
+    padding-bottom: 0 !important; }
     @media (min-width: 1025px) {
       .about .container a:hover::before {
-        border-bottom: solid 2px #000000; } }
+        border-bottom: solid 1px #000000; } }
     .about .container a::before {
-      border-bottom: solid 2px #000000;
+      border-bottom: solid 1px #000000;
       width: 100% !important; }
   .about .container div {
     display: flex;
@@ -366,9 +368,9 @@
           font-size: 20px; } }
       @media (min-width: 1025px) {
         .about .container div a:hover::before {
-          border-bottom: solid 2px #000000; } }
+          border-bottom: solid 1px #000000; } }
       .about .container div a::before {
-        border-bottom: solid 2px #000000;
+        border-bottom: solid 1px #000000;
         width: 100%; }
     .about .container div img {
       width: 20px;
@@ -423,7 +425,7 @@
   @media (max-width: 1024px) {
     .contact {
       padding: 0;
-      margin-bottom: -60px; } }
+      background-color: #FFFFFF; } }
   .contact.animated {
     height: auto;
     min-height: calc(100vh - 180px); }
@@ -485,9 +487,9 @@
                 font-size: 20px; } }
             @media (min-width: 1025px) {
               .contact .modal .modal-container .text-container div button:hover::before {
-                border-bottom: solid 2px #000000; } }
+                border-bottom: solid 1px #000000; } }
             .contact .modal .modal-container .text-container div button::before {
-              border-bottom: solid 2px #000000;
+              border-bottom: solid 1px #000000;
               width: 100%; }
           .contact .modal .modal-container .text-container div img {
             width: 20px;
@@ -515,11 +517,11 @@
     margin-bottom: 10px; }
     @media (max-width: 1024px) {
       .contact h1 {
-        margin: 20px 20px 0 20px;
+        margin: 20px 0 0 0;
         font-size: 30px; } }
   @media (max-width: 1024px) {
     .contact .container {
-      margin: 0 20px 20px 20px;
+      margin: 0 0 20px 0;
       text-align: justify; } }
   .contact .container form {
     display: flex;
@@ -552,9 +554,9 @@
             font-size: 20px; } }
         @media (min-width: 1025px) {
           .contact .container form .submit button:hover::before {
-            border-bottom: solid 2px #000000; } }
+            border-bottom: solid 1px #000000; } }
         .contact .container form .submit button::before {
-          border-bottom: solid 2px #000000;
+          border-bottom: solid 1px #000000;
           width: 100%; }
       .contact .container form .submit img {
         width: 20px;
@@ -570,9 +572,9 @@
     text-decoration: none; }
     @media (min-width: 1025px) {
       .contact .container a:hover::before {
-        border-bottom: solid 2px #000000; } }
+        border-bottom: solid 1px #000000; } }
     .contact .container a::before {
-      border-bottom: solid 2px #000000;
+      border-bottom: solid 1px #000000;
       width: 100% !important; }
   .contact .absolute-picture {
     position: fixed;
@@ -655,9 +657,9 @@
         .menu .languages button:hover {
           font-weight: bold; }
           .menu .languages button:hover::before {
-            border-bottom: solid 2px #000000; } }
+            border-bottom: solid 1px #000000; } }
       .menu .languages button::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 1px #000000; }
   .menu .items {
     display: flex;
     flex-direction: column;
@@ -678,9 +680,9 @@
         .menu .items .menu-link:hover {
           font-weight: bold; }
           .menu .items .menu-link:hover::before {
-            border-bottom: solid 2px #000000; } }
+            border-bottom: solid 1px #000000; } }
       .menu .items .menu-link::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 1px #000000; }
 
 .home {
   background-color: #f7f7f7;
@@ -728,7 +730,7 @@
     padding: 60px;
     transition: 0.4s cubic-bezier(1, 0, 0, 1);
     opacity: 0;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     cursor: pointer; }
     @media (max-width: 1024px) {
       .home .hover {
@@ -765,16 +767,18 @@
             margin-bottom: 5px; } }
       .home .hover .see-project button {
         font-size: 25px;
-        color: #FFFFFF;
+        color: #FFFFFF !important;
         font-family: GTWalsheimPro; }
         @media (max-width: 1024px) {
           .home .hover .see-project button {
             font-size: 20px; } }
         @media (min-width: 1025px) {
-          .home .hover .see-project button:hover::before {
-            border-bottom: solid 2px #FFFFFF; } }
+          .home .hover .see-project button:hover {
+            color: #FFFFFF !important; }
+            .home .hover .see-project button:hover::before {
+              border-bottom: solid 1px #FFFFFF; } }
         .home .hover .see-project button::before {
-          border-bottom: solid 2px #FFFFFF;
+          border-bottom: solid 1px #FFFFFF;
           width: 100%; }
 
 .home-animation {
@@ -829,9 +833,9 @@
       font-family: GTWalsheimProBold; }
       @media (min-width: 1025px) {
         .project .links div a:hover::before {
-          border-bottom: solid 2px #000000; } }
+          border-bottom: solid 1px #000000; } }
       .project .links div a::before {
-        border-bottom: solid 2px #000000;
+        border-bottom: solid 1px #000000;
         width: 100%; }
     .project .links div img {
       width: 13px;
@@ -925,9 +929,9 @@
         .project .navigation button {
           display: none; } }
       .project .navigation button:hover::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 1px #000000; }
       .project .navigation button::before {
-        border-bottom: solid 2px #000000;
+        border-bottom: solid 1px #000000;
         width: 100%; }
 
 .not_found {
@@ -991,14 +995,18 @@
       color: #000000;
       font-family: GTWalsheimPro;
       margin-top: 30px; }
+      .not_found .container button img {
+        width: 20px;
+        margin: 15px 0 0 10px; }
       @media (max-width: 1024px) {
         .not_found .container button {
           font-size: 20px; } }
       @media (min-width: 1025px) {
         .not_found .container button:hover::before {
-          border-bottom: solid 2px #000000; } }
+          border-bottom: solid 1px #000000; } }
       .not_found .container button::before {
-        border-bottom: solid 2px #000000; }
+        border-bottom: solid 1px #000000;
+        width: 100%; }
 
 * {
   box-sizing: border-box;
@@ -1025,6 +1033,7 @@ a {
   src: url("../../fonts/gt_walsheim_pro/GT-Walsheim-Pro-Bold.ttf"); }
 .btn-anim, .about .container a, .contact .container a {
   display: inline-block;
+  color: #000000;
   cursor: pointer;
   text-decoration: none;
   position: relative;
@@ -1034,8 +1043,10 @@ a {
   padding: 0;
   padding-bottom: 5px; }
   @media (min-width: 1025px) {
-    .btn-anim:hover::before, .about .container a:hover::before, .contact .container a:hover::before {
-      animation: draw 0.5s forwards; }
+    .btn-anim:hover, .about .container a:hover, .contact .container a:hover {
+      color: #000000; }
+      .btn-anim:hover::before, .about .container a:hover::before, .contact .container a:hover::before {
+        animation: draw 0.5s forwards; }
     @keyframes draw {
       from {
         width: 0; }

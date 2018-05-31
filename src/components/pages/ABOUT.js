@@ -97,6 +97,7 @@ class ABOUT extends Component {
         onHome={false}
         menuVisible={navbar}
         path={this.props.location.pathname}
+        className={(window.innerWidth < 1025) ? 'responsive' : ''}
         toggleMenu={this.toggleMenu}>
 
         {(content !== null) && (

@@ -61,7 +61,7 @@
     padding: 60px;
     transition: 0.4s $easeInOutExpo;
     opacity: 0;
-    color: $white;
+    color: $white !important;
     cursor: pointer;
 
     @media(max-width: 1024px) {
@@ -114,7 +114,7 @@
 
       button {
         font-size: 25px;
-        color: $white;
+        color: $white !important;
         font-family: GTWalsheimPro;
 
         @media(max-width: 1024px) {
@@ -125,8 +125,10 @@
 
         &:hover {
 
+          color: $white !important;
+
           &::before {
-            border-bottom:solid 2px $white;
+            border-bottom:solid 1px $white;
           }
 
         }
@@ -134,7 +136,7 @@
         }
 
         &::before {
-          border-bottom:solid 2px $white;
+          border-bottom:solid 1px $white;
           width: 100%;
         }
 
@@ -228,7 +230,7 @@
         &:hover {
 
           &::before {
-            border-bottom:solid 2px $black;
+            border-bottom:solid 1px $black;
           }
 
         }
@@ -236,7 +238,7 @@
         }
 
         &::before {
-          border-bottom:solid 2px $black;
+          border-bottom:solid 1px $black;
           width: 100%;
         }
 
@@ -377,13 +379,13 @@
       &:hover {
 
         &::before {
-          border-bottom:solid 2px $black;
+          border-bottom:solid 1px $black;
         }
 
       }
 
       &::before {
-        border-bottom:solid 2px $black;
+        border-bottom:solid 1px $black;
         width: 100%;
       }
 

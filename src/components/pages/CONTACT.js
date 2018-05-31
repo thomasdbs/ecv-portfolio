@@ -60,15 +60,15 @@ class ABOUT extends Component {
       document.querySelector('.contact h1').classList.add('animation')
       document.querySelector('.contact').classList.add('animation')
       document.querySelector('.contact .container').classList.add('animation')
-    }, 100)
+    }, 500)
     setTimeout( () => {
-      const picture = document.querySelector('.contact absolute-picture')
+      const picture = document.querySelector('.contact .absolute-picture')
       if (picture) {
         picture.classList.add('animation')
       }else {
         document.querySelector('.contact .no_picture').classList.add('animation')
       }
-    }, 500)
+    }, 100)
   }
 
   remove = () => {
@@ -87,6 +87,18 @@ class ABOUT extends Component {
 
   submitForm = (e) => {
     e.preventDefault()
+
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+
+    axios.post('https://www.enformed.io/yzg7x0s/', {
+      name:this.state.form_name,
+      email:this.state.form_email,
+      message:this.state.form_message
+    })
+    .then(response => console.log('mail ok'))
+    .catch(error => console.log('mail ko'))
+
+
     this.setState({ sended: true })
   }
 
@@ -154,6 +166,7 @@ class ABOUT extends Component {
           onHome={false}
           menuVisible={navbar}
           path={this.props.location.pathname}
+          className={(window.innerWidth < 1025) ? 'responsive' : ''}
           toggleMenu={this.toggleMenu}>
 
           {(title !== null) && (
@@ -186,10 +199,11 @@ class ABOUT extends Component {
               <div className="container">
                 <p>{introduction}</p>
 
-                <form onSubmit={this.submitForm}>
+                <form onSubmit={this.submitForm} >
                   <input
                     required
                     type="text"
+                    name="name"
                     placeholder={Language(language).form_placeholder_name}
                     value={form_name}
                     onChange={(e) => this.setState({ form_name: e.target.value })}
@@ -197,6 +211,7 @@ class ABOUT extends Component {
                   <input
                     required
                     type="email"
+                    name="email"
                     placeholder={Language(language).form_placeholder_email}
                     value={form_email}
                     onChange={(e) => this.setState({ form_email: e.target.value })}
@@ -204,6 +219,7 @@ class ABOUT extends Component {
                   <textarea
                     required
                     rows="2"
+                    name="message"
                     placeholder={Language(language).form_placeholder_message}
                     value={form_message}
                     onChange={(e) => this.setState({ form_message: e.target.value })}

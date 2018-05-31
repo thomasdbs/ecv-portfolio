@@ -11,7 +11,7 @@
 
   @media(max-width: 1024px) {
     padding: 0;
-    margin-bottom: -60px;
+    background-color: $white;
   }
 
   &.animated {
@@ -102,7 +102,7 @@
               &:hover {
 
                 &::before {
-                  border-bottom:solid 2px $black;
+                  border-bottom:solid 1px $black;
                 }
 
               }
@@ -110,7 +110,7 @@
             }
 
             &::before {
-              border-bottom:solid 2px $black;
+              border-bottom:solid 1px $black;
               width: 100%;
             }
 
@@ -161,7 +161,7 @@
     margin-bottom: 10px;
 
     @media(max-width: 1024px) {
-      margin: 20px 20px 0 20px;
+      margin: 20px 0 0 0;
       font-size: 30px;
     }
 
@@ -170,7 +170,7 @@
   .container {
 
     @media(max-width: 1024px) {
-      margin: 0 20px 20px 20px;
+      margin: 0 0 20px 0;
       text-align: justify;
     }
 
@@ -221,7 +221,7 @@
             &:hover {
 
               &::before {
-                border-bottom:solid 2px $black;
+                border-bottom:solid 1px $black;
               }
 
             }
@@ -229,7 +229,7 @@
           }
 
           &::before {
-            border-bottom:solid 2px $black;
+            border-bottom:solid 1px $black;
             width: 100%;
           }
 
@@ -262,7 +262,7 @@
         &:hover {
 
           &::before {
-            border-bottom:solid 2px $black;
+            border-bottom:solid 1px $black;
           }
 
         }
@@ -270,7 +270,7 @@
       }
 
       &::before {
-        border-bottom:solid 2px $black;
+        border-bottom:solid 1px $black;
         width: 100% !important;
       }
 
